@@ -1,6 +1,6 @@
 {
-  "name": "twit",
-  "version": "0.0.0",
+  "name": "twitte",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
