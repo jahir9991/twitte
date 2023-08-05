@@ -38,7 +38,7 @@
         </div>
 
         <div>
-          <input type="text" placeholder="password" formControlName="password" />
+          <input type="password" placeholder="password" formControlName="password" />
 
           <div *ngIf="validateForm.controls['password'].touched" class="">
             <p class="text-red-400 animate-fade " *ngIf="validateForm.controls['password'].hasError('required')">
