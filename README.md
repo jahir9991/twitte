@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 ## Hosted server 
 
-Run  `https://twitte.pages.dev`. The application is hosted is cloudflare pages .
+Run  [Demo](https://twitte.pages.dev) 
+The application is hosted on Cloudflare pages.
 
 
 ## Development server
@@ -12,9 +13,11 @@ Run `npm start` or 'yarn start` for a dev server. Navigate to `http://localhost:
 
 ## Build
 
-First need to install all dependencies with `npm install` or  `yarn install`
+First, need to install all dependencies with `npm install` or  `yarn install`
 
-Run `npm run build` or  `yarn build`  to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` or  `yarn build`  to build the project. 
+
+The build artifacts will be stored in the `dist/` directory.
 
 ## Further help
 
