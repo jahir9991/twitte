@@ -39,10 +39,10 @@ export class SignupFacade {
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (res: SignupResponseModel) => {
-          console.log(res);
+        
 
           if (res.message === 'successful') {
-            this.router.navigate(['/logout']);
+            this.router.navigate(['/auth/signin']);
           } else {
             this.status$.next(statusEnum.ERROR);
           }

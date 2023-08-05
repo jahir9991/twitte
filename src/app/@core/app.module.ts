@@ -13,7 +13,7 @@ import { AsideNavComponent } from './layout/components/aside-nav/aside-nav.compo
 import { MobileNavComponent } from './layout/components/mobile-nav/mobile-nav.component';
 import { SigninGuard } from './guards/signin.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { LogoutPageComponent } from '../@features/auth/pages/logout-page/logout-page.component';
+import { LogoutPageComponent } from './logout-page/logout-page.component';
 
 @NgModule({
   declarations: [
