@@ -1,0 +1,68 @@
+<div class="sing-in">
+  <div class="content-wrapper">
+    <a routerLink="/auth" class="close-btn">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M18 6l-12 12" />
+        <path d="M6 6l12 12" />
+      </svg>
+    </a>
+    <div class="logo-wrapper">
+      <img src="../../../../../assets/icon-svg.svg" alt="logo" />
+    </div>
+
+    <div class="login-wrapper relative">
+
+
+      <app-full-loading *ngIf="(status$|async)==statusEnum.LOADING" />
+
+
+      <h3>Sing in to X</h3>
+
+
+      <form [formGroup]="validateForm" (submit)="onSubmit()">
+        <div>
+          <input type="text" placeholder="email" formControlName="email" />
+
+          <div *ngIf="validateForm.controls['email'].touched">
+
+            <p class="text-red-400 animate-fade" *ngIf="validateForm.controls['email'].hasError('email')">
+              not a valid email
+            </p>
+            <p class="text-red-400 animate-fade " *ngIf="validateForm.controls['email'].hasError('required')">
+              email is required
+            </p>
+          </div>
+
+
+        </div>
+
+        <div>
+          <input type="text" placeholder="password" formControlName="password" />
+
+          <div *ngIf="validateForm.controls['password'].touched" class="">
+            <p class="text-red-400 animate-fade " *ngIf="validateForm.controls['password'].hasError('required')">
+              password is required
+            </p>
+          </div>
+        </div>
+
+        <p class="text-red-400 animate-fade " *ngIf="(status$|async)==statusEnum.ERROR">
+          Sorry, we could not find your account.
+        </p>
+
+        <button class="login-btn" type="submit">
+          Sign in </button>
+
+      </form>
+
+      <br>
+      <p class="footer-text">
+        Don't have an account? <a routerLink="/auth/signup">Sign up</a>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+.aside-menu-inner {
+  @apply h-screen overflow-hidden sticky left-0 top-0 w-auto flex flex-col justify-between;
+
+  .aside-nav {
+    @apply mt-5 px-2;
+
+    .nav-item {
+
+      @apply mt-1 flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-600 hover:text-blue-300;
+
+      span {
+        @apply hidden lg:block;
+      }
+    }
+
+    .tweet-btn {
+      @apply hidden lg:block bg-blue-400 w-48 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full;
+    }
+  }
+
+  .user-profile-icon {
+    @apply flex-shrink-0 flex justify-between items-center  rounded-full p-4 mt-12 mr-2 mb-5 w-full;
+
+    .logout-option-btn {
+      @apply w-8 h-8 rounded-full flex items-center justify-center hover:bg-light-gray hover:stroke-white transition-all;
+
+      svg {
+        @apply w-6 stroke-secondary;
+      }
+    }
+  }
+}
+
+.active{
+ @apply  bg-blue-800 text-white;
+}

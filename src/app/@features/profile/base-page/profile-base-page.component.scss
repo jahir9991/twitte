@@ -1,0 +1,80 @@
+.user-profile {
+  @apply border-x border-light-gray col-span-3 lg:col-span-2;
+
+  .top-bar {
+    @apply px-5 py-3 flex items-center gap-8 bg-white bg-opacity-80;
+
+    svg {
+      @apply w-6;
+    }
+  }
+
+  .user-profile-imgs {
+    @apply w-full h-[250px] relative;
+
+    .cover-img-wrapper {
+      @apply w-full h-full overflow-hidden;
+
+      img {
+        @apply object-cover w-full object-center;
+      }
+    }
+
+    .profile-img-wrapper {
+      @apply h-[85px] sm:h-[135px] w-[85px] sm:w-[135px] rounded-full bg-dark-gray absolute left-5 -bottom-14 border-2 border-dark-gray overflow-hidden;
+
+      img {
+        @apply w-full;
+      }
+    }
+  }
+  .edit-btn-wrapper {
+    @apply p-5 w-full flex justify-end;
+
+    button {
+      @apply border border-secondary font-semibold rounded-full py-1 px-3;
+    }
+  }
+
+  .profile-info-content {
+    @apply px-5;
+
+    .name {
+      @apply text-lg font-bold;
+    }
+
+    .user_name {
+      @apply text-dark-gray font-light;
+    }
+
+    .follow-wrapper {
+      @apply flex items-center gap-4 text-sm mt-3 text-secondary;
+    }
+  }
+
+  .profile-layout-wrapper {
+    @apply w-full;
+
+    .profile-menu-wrapper {
+      @apply border-b border-dark-gray px-5 mt-5 w-full;
+
+      ul {
+        @apply w-full flex  justify-around;
+
+        li {
+          a {
+            @apply p-3 block hover:bg-light-gray rounded;
+          }
+        }
+
+        .active {
+          @apply border-b-4 border-primary animate-fade animate-duration-500;
+        }
+      }
+    }
+
+    .profile-layout-slot {
+      @apply px-5 mt-3;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<div class="grid grid-cols-3 w-full">
+  <div class="user-profile">
+    <a class="top-bar" routerLink="/home">
+      <svg viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"
+          ></path>
+        </g>
+      </svg>
+
+    </a>
+
+    <div class="user-profile-imgs">
+      <div class="cover-img-wrapper">
+        <img src="/assets/icon-ios.77d25eba.png" alt="cover image" />
+      </div>
+
+      <div class="profile-img-wrapper">
+        <img src="/assets/icon-ios.77d25eba.png" alt="" />
+      </div>
+    </div>
+    <div class="edit-btn-wrapper" >
+      <button *ngIf="myProfile" >Edit profile</button>
+      <button *ngIf="!myProfile" >follow</button>
+    </div>
+
+    <div class="profile-info-content">
+   
+
+      <div class="follow-wrapper">
+        <a routerLink="/profile/following"> <span>0</span> Following </a>
+        <a routerLink="/profile/follower"> <span>0</span> Follower </a>
+      </div>
+    </div>
+
+    <div class="profile-layout-wrapper">
+      <div class="profile-menu-wrapper">
+        <ul>
+          <li>
+            <a
+              [routerLink]="['/profile', userId]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Tweets</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/profile', userId, 'following']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Following</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/profile', userId, 'follower']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Follower</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile-layout-slot">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden lg:block"></div>
+</div>

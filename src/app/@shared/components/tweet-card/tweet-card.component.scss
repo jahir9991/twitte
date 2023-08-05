@@ -1,0 +1,15 @@
+.tweet-card {
+  @apply w-full ;
+
+  .user-info {
+    @apply flex-shrink-0 block ;
+
+    .info-wrapper {
+      @apply flex items-center;
+
+      img {
+        @apply inline-block h-10 w-10 rounded-full;
+      }
+    }
+  }
+}

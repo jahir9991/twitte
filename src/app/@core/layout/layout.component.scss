@@ -1,0 +1,16 @@
+
+.root-layout {
+  @apply w-full container;
+
+  .wrapper {
+    @apply grid grid-cols-12;
+
+    .aside-nav-wrapper {
+      @apply hidden sm:block col-span-2 lg:col-span-3 py-4 relative;
+    }
+
+    .layout-slot {
+      @apply col-span-12 sm:col-span-10 lg:col-span-9;
+    }
+  }
+}

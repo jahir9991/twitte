@@ -1,0 +1,36 @@
+<div class="auth">
+  <div class="auth_logo">
+    <img src="../../../assets/icon-svg.svg" alt="" />
+  </div>
+
+  <div class="auth_wrapper">
+    <h1>Happening now</h1>
+
+    <h3>Join today.</h3>
+
+    <div class="auth_buttons">
+      <app-apple-auth-buttton />
+      <app-google-auth-buttton />
+      <div class="w-full flex items-center justify-center gap-2">
+        <div class="h-[1px] w-full bg-gray-300 mt-1"></div>
+        <span>or</span>
+        <div class="h-[1px] w-full bg-gray-300 mt-1"></div>
+      </div>
+
+      <a routerLink="/auth/signup" class="sing-up-btn">Create account</a>
+
+      <p class="text-xs text-secondary mb-16">
+        By signing up, you agree to the
+        <span class="text-primary">Terms of Service</span> and
+        <span class="text-primary">Privacy Policy</span>, including
+        <span class="text-primary">Cookie Use</span>.
+      </p>
+
+      <div class="sign-in-wrapper">
+        <p>Already have an account?</p>
+        <a routerLink="/auth/signin" class="sigin-btn">Sing in</a>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

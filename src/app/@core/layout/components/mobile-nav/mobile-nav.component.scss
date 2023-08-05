@@ -1,0 +1,80 @@
+.mobile-nav {
+  @apply w-full fixed bottom-0 left-0 p-3 bg-white block sm:hidden;
+
+  box-shadow: 0px 0px 20px 0px rgba(92, 92, 92, 0.51);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(92, 92, 92, 0.51);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(92, 92, 92, 0.51);
+
+  ul {
+    @apply mx-auto flex justify-between items-center w-full;
+
+    li {
+      @apply flex justify-center items-center h-full w-full;
+      a {
+        svg {
+          @apply w-7;
+        }
+      }
+
+      .side-menu-btn {
+        @apply w-9 h-8 rounded-full overflow-hidden;
+      }
+    }
+  }
+}
+
+.items-wrapper {
+  @apply fixed  top-0 h-screen w-3/4 p-5 flex flex-col justify-start bg-white  z-20 transition-all;
+
+  .user-content-wrapper {
+    @apply flex flex-col gap-2 w-full;
+
+    .img-wrapper {
+      @apply flex justify-between items-center w-full;
+
+      img {
+        @apply w-12 h-12 rounded-full;
+      }
+
+      .add-account-btn {
+        svg {
+          @apply w-8 stroke-dark-gray fill-none;
+        }
+      }
+    }
+
+    .info {
+      @apply w-full;
+    }
+
+    .follower-info {
+      @apply flex justify-between w-full items-center mt-3;
+    }
+  }
+
+  .nav-list {
+    @apply mt-10;
+
+    .nav-item {
+      @apply flex gap-3 items-center py-3 w-full;
+
+      svg {
+        @apply w-8;
+      }
+
+      span {
+        @apply font-semibold text-base;
+      }
+    }
+  }
+}
+.aside-nav-bg {
+  @apply w-full bg-black bg-opacity-50 h-screen fixed top-0 z-10 transition-opacity;
+}
+.active{
+  @apply  bg-blue-800 text-white;
+ }
+
+ .bar-active{
+  @apply  bg-gray-400 p-4 rounded-full;
+ }

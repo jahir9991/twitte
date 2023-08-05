@@ -1,0 +1,20 @@
+<ng-container *ngFor="let tweet of tweetsData$ | async; trackBy: identify">
+  <app-tweet-card [tweet]="tweet" />
+</ng-container>
+
+<div
+  class="infinity"
+  *ngIf="hasMore$ | async; else noMoredata"
+  infiniteScroll
+  (scrolled)="loadMore()"
+>
+  <div class="relative">
+    <app-full-loading></app-full-loading>
+  </div>
+</div>
+
+<ng-template #noMoredata>
+  <div class="h-32">
+    <p class="text-center">no more tweet</p>
+  </div>
+</ng-template>

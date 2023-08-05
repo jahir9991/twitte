@@ -1,0 +1,55 @@
+.auth {
+  @apply w-full lg:min-h-screen grid grid-cols-1 lg:grid-cols-2 px-10 py-10 sm:px-40 sm:py-5 lg:px-0 lg:py-0;
+
+  .auth_logo {
+    @apply w-full h-full flex justify-start lg:justify-center items-center;
+
+    img {
+      @apply w-16 lg:w-1/2 max-w-[380px];
+    }
+  }
+
+  .auth_wrapper {
+    @apply w-full mt-16 lg:mt-0 lg:min-h-screen flex flex-col justify-center text-left;
+
+    h1 {
+      @apply font-twitter-chirp text-4xl sm:text-6xl font-extrabold mb-12;
+    }
+
+    h3 {
+      @apply font-twitter-chirp-extended font-extrabold text-3xl mb-7;
+    }
+
+    .auth_buttons {
+      @apply w-[300px] flex flex-col gap-3;
+      button,
+      a {
+        @apply flex justify-center items-center gap-2 border w-full p-2 rounded-full bg-white;
+
+        svg {
+          @apply w-5;
+        }
+
+        span {
+          @apply font-semibold;
+        }
+      }
+
+      .sing-up-btn {
+        @apply bg-primary text-white font-semibold hover:bg-opacity-90 transition-all;
+      }
+
+      .sign-in-wrapper {
+        @apply w-full;
+
+        p {
+          @apply text-lg font-bold mb-3;
+        }
+
+        .sigin-btn {
+          @apply bg-transparent font-semibold text-primary hover:bg-dark-gray hover:bg-opacity-10 transition-all;
+        }
+      }
+    }
+  }
+}

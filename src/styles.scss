@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-fluid {
+    @apply lg:min-w-full 2xl:px-6 xl:px-12  md:px-3 px-2 mx-auto;
+  }
+  .container-min {
+    @apply xl:mx-56   mx-auto px-2;
+  }
+  .container {
+    @apply px-0 xl:px-[10px] mx-auto;
+  }
+}
+
+@font-face {
+  font-family: TwitterChirpExtendedHeavy;
+  src: url(/src/assets/fonts/chirp-extended-heavy-web.woff2) format("woff2");
+  src: url(/src/assets/fonts/chirp-extended-heavy-web.woff) format("woff");
+  font-weight: 700;
+  font-style: "normal";
+  font-display: "swap";
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(/src/assetsfonts/chirp-regular-web.woff2) format("woff2");
+  src: url(/src/assets/fonts/chirp-regular-web.woff) format("woff");
+  font-weight: 400;
+  font-style: "normal";
+  font-display: "swap";
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(/src/assets/fonts/chirp-medium-web.woff2) format("woff2");
+  src: url(/src/assets/fonts/chirp-medium-web.woff) format("woff");
+  font-weight: 500;
+  font-style: "normal";
+  font-display: "swap";
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(/src/assets/fonts/chirp-bold-web.woff2) format("woff2");
+  src: url(/src/assets/fonts/chirp-bold-web.woff) format("woff");
+  font-weight: 700;
+  font-style: "normal";
+  font-display: "swap";
+}
+
+@font-face {
+  font-family: TwitterChirp;
+  src: url(/src/assets/fonts/chirp-heavy-web.woff2) format("woff2");
+  src: url(/src/assets/fonts/chirp-heavy-web.woff) format("woff");
+  font-weight: 800;
+  font-style: "normal";
+  font-display: "swap";
+}

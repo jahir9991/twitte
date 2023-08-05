@@ -1,0 +1,15 @@
+<div class="user-card animate-fade-up">
+  <a class="user-info" [routerLink]="['/profile', user.id]">
+    <div class="user-img-wrapper">
+      <img
+        src="/assets/icon-ios.77d25eba.png"
+        alt=""
+      />
+    </div>
+    <div class="info-wrapper">
+      <p class="name">{{ user?.username }}</p>
+      <p class="user-name">@{{ user?.username }}</p>
+    </div>
+  </a>
+  <button class="follow-btn">Follow</button>
+</div>
