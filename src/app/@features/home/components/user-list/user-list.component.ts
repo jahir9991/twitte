@@ -5,7 +5,7 @@ import {
   Type,
   ViewChild,
 } from '@angular/core';
-import { UserListFacade } from './userList.facade';
+import { UserListFacade } from './user-list.facade';
 
 @Component({
   selector: 'app-user-list',

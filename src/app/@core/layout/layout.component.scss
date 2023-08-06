@@ -6,7 +6,7 @@
     @apply grid grid-cols-12;
 
     .aside-nav-wrapper {
-      @apply hidden sm:block col-span-2 lg:col-span-3 py-4 relative;
+      @apply hidden sm:block col-span-2 lg:col-span-3  relative;
     }
 
     .layout-slot {

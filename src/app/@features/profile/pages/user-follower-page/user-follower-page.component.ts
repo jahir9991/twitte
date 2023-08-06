@@ -3,35 +3,26 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, combineLatest, map, of, scan, switchMap, tap } from 'rxjs';
 import { FollowerResponseModel } from 'src/app/@models/followerResponse.model';
 import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
+import { UserFollowerPageFacade } from './user-follower-page.facade';
 
 @Component({
   templateUrl: './user-follower-page.component.html',
-  styleUrls: ['./user-follower-page.component.scss']
+  styleUrls: ['./user-follower-page.component.scss'],
+  providers:[UserFollowerPageFacade]
 })
 export class UserFollowerPageComponent {
-  constructor(private tweetApiService: TweetApiService
+  constructor(private modelFacade: UserFollowerPageFacade
   ) { }
 
 
-  currentPage$ = new BehaviorSubject<number>(1);
-  currentSize$ = new BehaviorSubject<number>(10);
-  loading$ = new BehaviorSubject(false);
-  hasMore$ = new BehaviorSubject(true);
+  currentPageData$ = this.modelFacade.currentPageData$;
+  status$ = this.modelFacade.status$;
+  statusEnum = this.modelFacade.statusEnum;
 
-  followersData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
-    switchMap(([currentPage, currentSize]) =>
-      this.tweetApiService.getUserFollowers(currentPage, currentSize)
-    ),
-    catchError((err) => of([])),
-    tap((data: FollowerResponseModel) => {
-      this.hasMore$.next(data.count == this.currentSize$.value);
-    }),
-    map((data: FollowerResponseModel) => data.followers),
-    scan(
-      (acc, data) => (this.currentPage$.value === 1 ? data : [...acc, ...data]),
-      []
-    )
-  );
+  currentPage$ = this.modelFacade.currentPage$;
+  currentSize$ = new BehaviorSubject<number>(10);
+  hasMore$ = this.modelFacade.hasMore$;
+
 
   loadMore() {
     if (!this.hasMore$.value) return;
