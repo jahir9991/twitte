@@ -1,5 +1,4 @@
 import {
-  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -7,9 +6,9 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, catchError } from 'rxjs';
-import { AuthApiService } from 'src/app/@services/api/auth-api.service';
+import { Observable } from 'rxjs';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
+import { ENV } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,24 +20,29 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    let accessToken: any = this.localStorageService.getToken();
-    if (accessToken) {
-      let decodedAccessToken: any = this.localStorageService.getDecodedToken();
-      let accessTokenExpired: any = this.localStorageService.isTokenExpired(
-        decodedAccessToken.exp
-      );
+    if (this.isExcludedUrl(req.url)) {
+      return next.handle(req);
+    }
 
-      if (!accessTokenExpired) {
-        req = req.clone({
-          setHeaders: {
-            'X-Jwt-Token': `Bearer ${accessToken}`,
-          },
-        });
-      } else {
-        this.router.navigate(['/logout']);
-        alert('token expired');
-      }
+    const isAuthenticated: any = this.localStorageService.isAuthenticated();
+    console.log('isAuthenticated',isAuthenticated);
+    
+
+    if (!isAuthenticated) {
+      this.router.navigate(['/logout']);
+    } else {
+      const accessToken: any = this.localStorageService.getToken();
+      req = req.clone({
+        setHeaders: {
+          'X-Jwt-Token': `Bearer ${accessToken}`,
+        },
+      });
     }
     return next.handle(req);
+  }
+  private isExcludedUrl(url: string): boolean {
+    return [ENV.API_ENDPOINT + 'signup', ENV.API_ENDPOINT + 'login'].some(
+      (excludedUrl) => url.includes(excludedUrl)
+    );
   }
 }

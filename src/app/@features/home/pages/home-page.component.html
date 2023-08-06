@@ -1,37 +1,27 @@
 <div class="grid grid-cols-3 relative">
-  <div
-    class="col-span-3 lg:col-span-2 border border-gray-300 h-auto border-t-0"
-  >
+  <div class="col-span-3 lg:col-span-2 h-auto border-t-0 shadow-md">
 
 
-    <div class="flex bg-white sticky top-0 z-10">
+    <div class="flex bg-white sticky top-0 z-10 ">
       <div class="flex-1 m-2">
         <h2 class="px-4 py-2 text-xl font-semibold">Home</h2>
       </div>
-     
+
     </div>
     <hr class="border-gray-200" />
 
     <app-tweet-post />
-    <hr class="border-gray-200" />
+    <br>
+    <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
+      <ng-container *ngFor="let tweet of currentPageData$ | async; trackBy: identify">
+        <app-tweet-card [tweet]="tweet" />
+      </ng-container>
 
-    <ng-container
-      *ngFor="let tweet of currentPageData$ | async; trackBy: identify"
-    >
-      <app-tweet-card [tweet]="tweet" />
-    </ng-container>
-
-    <div
-      class="infinity"
-      *ngIf="hasMore$ | async; else noMoredata"
-      infiniteScroll
-      (scrolled)="loadMore()"
-    >
-      <div class="relative">
-        <app-full-loading></app-full-loading>
-      </div>
     </div>
 
+    <div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
+      <app-full-loading></app-full-loading>
+    </div>
     <ng-template #noMoredata>
       <div class="h-32">
         <p class="text-center">no more tweet</p>

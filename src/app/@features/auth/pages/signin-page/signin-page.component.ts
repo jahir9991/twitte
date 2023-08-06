@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SigninFacade } from './signin.facade';
 import { SigninPayloadModel } from 'src/app/@models/signinPayload.model';
@@ -8,6 +8,8 @@ import { ENV } from 'src/environments/environment';
   templateUrl: './signin-page.component.html',
   styleUrls: ['./signin-page.component.scss'],
   providers: [SigninFacade],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class SigninPageComponent implements OnInit {
   validateForm!: FormGroup;

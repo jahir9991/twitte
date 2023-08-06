@@ -2,7 +2,7 @@
   @apply min-h-screen w-full bg-secondary bg-opacity-50 fixed top-0 left-0 flex justify-center items-center;
 
   .content-wrapper {
-    @apply animate-fade-up  bg-white rounded-lg relative w-[90%] sm:w-[580px];
+    @apply animate-fade-up animate-duration-300  bg-white rounded-lg relative w-[90%] sm:w-[580px];
 
     .logo-wrapper {
       @apply w-full flex justify-center mt-2;

@@ -8,12 +8,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RouterModule } from '@angular/router';
 import { FullLoadingComponent } from './components/full-loading/full-loading.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TweetPostFacade } from './components/tweet-post/tweet-post.facade';
+
 
 @NgModule({
   declarations: [UserCardComponent, TweetPostComponent, TweetCardComponent, FullLoadingComponent],
   imports: [RouterModule, CommonModule, TimeagoModule, InfiniteScrollModule, FormsModule, ReactiveFormsModule],
-  providers: [TweetPostFacade],
+  providers: [],
   exports: [
     UserCardComponent,
     TweetPostComponent,

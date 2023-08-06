@@ -6,8 +6,10 @@
 
     .nav-item {
 
-      @apply mt-1 flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-600 hover:text-blue-300;
-
+      @apply mt-1 flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-200;
+      &.active{
+        @apply  font-extrabold ; 
+       }
       span {
         @apply hidden lg:block;
       }
@@ -31,6 +33,3 @@
   }
 }
 
-.active{
- @apply  bg-blue-800 text-white;
-}
