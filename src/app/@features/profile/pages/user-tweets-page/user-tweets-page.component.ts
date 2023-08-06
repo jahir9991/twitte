@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, catchError, combineLatest, map, of, scan, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  map,
+  of,
+  scan,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { TweetResponseModel } from 'src/app/@models/tweetResponse.model';
 import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
 
 @Component({
   templateUrl: './user-tweets-page.component.html',
-  styleUrls: ['./user-tweets-page.component.scss']
+  styleUrls: ['./user-tweets-page.component.scss'],
 })
 export class UserTweetsPageComponent {
   constructor(
     private tweetApiService: TweetApiService,
-    private route: ActivatedRoute,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.userId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -25,7 +34,7 @@ export class UserTweetsPageComponent {
   loading$ = new BehaviorSubject(false);
   hasMore$ = new BehaviorSubject(true);
 
-  tweetsData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
+  currentPageData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
     switchMap(([currentPage, currentSize]) =>
       this.tweetApiService.getUserTweets(this.userId, currentPage, currentSize)
     ),

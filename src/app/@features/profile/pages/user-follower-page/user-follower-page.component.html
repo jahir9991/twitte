@@ -3,7 +3,7 @@
 
   <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
 
-    <ng-container *ngFor="let user of followersData$ | async; trackBy: identify">
+    <ng-container *ngFor="let user of currentPageData$ | async; trackBy: identify">
       <app-user-card [user]="user" />
     </ng-container>
   </div>
@@ -12,7 +12,6 @@
 
   <div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
     <app-full-loading></app-full-loading>
-
 
   </div>
 
