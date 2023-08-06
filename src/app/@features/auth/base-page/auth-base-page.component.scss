@@ -21,7 +21,7 @@
     }
 
     .auth_buttons {
-      @apply w-[300px] flex flex-col gap-3;
+      @apply w-[300px] flex flex-col gap-3  mx-auto lg:mx-0;
       button,
       a {
         @apply flex justify-center items-center gap-2 border w-full p-2 rounded-full bg-white;

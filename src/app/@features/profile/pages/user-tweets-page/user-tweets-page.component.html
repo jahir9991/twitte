@@ -1,16 +1,15 @@
-<ng-container *ngFor="let tweet of tweetsData$ | async; trackBy: identify">
-  <app-tweet-card [tweet]="tweet" />
-</ng-container>
+<div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
 
-<div
-  class="infinity"
-  *ngIf="hasMore$ | async; else noMoredata"
-  infiniteScroll
-  (scrolled)="loadMore()"
->
-  <div class="relative">
-    <app-full-loading></app-full-loading>
-  </div>
+  <ng-container *ngFor="let tweet of tweetsData$ | async; trackBy: identify">
+    <app-tweet-card [tweet]="tweet" />
+  </ng-container>
+
+
+</div>
+
+<div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
+  <app-full-loading></app-full-loading>
+
 </div>
 
 <ng-template #noMoredata>

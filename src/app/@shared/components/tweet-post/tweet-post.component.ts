@@ -7,6 +7,7 @@ import { TweetPostFacade } from './tweet-post.facade';
   selector: 'app-tweet-post',
   templateUrl: './tweet-post.component.html',
   styleUrls: ['./tweet-post.component.scss'],
+  providers:[TweetPostFacade]
 })
 export class TweetPostComponent {
 
@@ -32,6 +33,6 @@ export class TweetPostComponent {
   onSubmit(): void {
     if (this.validateForm.invalid) return;
     this.modelfacade.tweetPost(this.validateForm.value);
-    this.validateForm.reset()
+    this.validateForm.reset({})
   }
 }

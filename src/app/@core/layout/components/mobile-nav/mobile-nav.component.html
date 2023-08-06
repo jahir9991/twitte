@@ -46,12 +46,13 @@
         src="/assets/icon-ios.77d25eba.png"
         alt=""
       />
-      <button class="add-account-btn" (click)="toggleAsideNav()">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-          <path d="M9 12l6 0" />
-          <path d="M12 9l0 6" />
+      <button class="add-account-btn rotate-180" (click)="toggleAsideNav()">
+        <svg viewBox="0 0 24 24">
+          <g>
+            <path
+              d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"
+            ></path>
+          </g>
         </svg>
       </button>
     </div>

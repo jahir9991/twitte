@@ -1,5 +1,9 @@
 .tweet-card {
-  @apply w-full ;
+  @apply w-full p-2 ;
+
+  .inner{
+    @apply rounded-md bg-gray-100 p-2 hover:bg-gray-200;
+  }
 
   .user-info {
     @apply flex-shrink-0 block ;

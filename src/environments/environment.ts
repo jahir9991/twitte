@@ -1,5 +1,5 @@
 export const ENV = {
-  SESSION_STORAGE_PREFIX:"twit_",
+  SESSION_STORAGE_PREFIX:"twitte_",
   API_ENDPOINT: 'https://missingdata.pythonanywhere.com/',
   INIT_AUTH:{
     email:'',
