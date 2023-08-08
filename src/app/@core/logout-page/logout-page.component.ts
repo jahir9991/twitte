@@ -39,6 +39,6 @@ export class LogoutPageComponent implements OnInit {
   }
   logout() {
     this.localstorageService.clearAll();
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/auth'], { replaceUrl: true });
   }
 }
