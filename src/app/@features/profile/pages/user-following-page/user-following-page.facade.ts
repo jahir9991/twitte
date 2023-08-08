@@ -64,7 +64,7 @@ export class UserFollowingPageFacade {
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (data) => {
-          this.toastService.success(data.resp);
+          this.toastService.success(data.resp,{autoClose:false});
         },
       });
   }

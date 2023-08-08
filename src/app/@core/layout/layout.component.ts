@@ -4,6 +4,7 @@ import { FollowingResponseModel } from 'src/app/@models/followingResponse.model'
 import { ProfileApiService } from 'src/app/@services/api/profile-api.service';
 import { UserApiService } from 'src/app/@services/api/user-api.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
+import { UserStore } from 'src/app/@services/user.store';
 
 @UntilDestroy()
 @Component({
@@ -13,5 +14,5 @@ import { LocalStorageService } from 'src/app/@services/local-storage.service';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-
+  constructor(private UserStore: UserStore) {}
 }

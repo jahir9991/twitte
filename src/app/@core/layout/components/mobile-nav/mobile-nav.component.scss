@@ -1,5 +1,5 @@
 .mobile-nav {
-  @apply w-full fixed bottom-0 left-0 p-3 bg-white block sm:hidden;
+  @apply w-full fixed bottom-0 left-0 p-3 block sm:hidden backdrop-filter backdrop-blur-lg;
 
   box-shadow: 0px 0px 20px 0px rgba(92, 92, 92, 0.51);
   -webkit-box-shadow: 0px 0px 20px 0px rgba(92, 92, 92, 0.51);

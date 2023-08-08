@@ -8,9 +8,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RouterModule } from '@angular/router';
 import { FullLoadingComponent } from './components/full-loading/full-loading.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [UserCardComponent, TweetCardComponent, FullLoadingComponent],
+  declarations: [UserCardComponent, TweetCardComponent, FullLoadingComponent, HeaderComponent],
   imports: [
     RouterModule,
     CommonModule,
@@ -22,11 +23,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [],
   exports: [
     UserCardComponent,
+    HeaderComponent,
 
     TweetCardComponent,
     FullLoadingComponent,
     InfiniteScrollModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

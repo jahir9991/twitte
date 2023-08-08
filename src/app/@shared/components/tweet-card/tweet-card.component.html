@@ -1,11 +1,10 @@
-<div class="tweet-card animate-fade-up animate-duration-300 ">
+<div class="tweet-card animate-fade-up animate-duration-300 break-words ">
   <div class="inner">
 
     <div class="flex flex-shrink-0 p-4 pb-0">
       <div class="user-info">
         <div class="info-wrapper">
           <a [routerLink]="['/',payload.user.id]">
-
             <img src="/assets/icon-ios.77d25eba.png" alt="" />
           </a>
           <div class="ml-3">
@@ -13,7 +12,7 @@
               {{ payload.user.username }}
 
             </a>
-            <p class="inline  text-sm leading-5 font-medium text-gray-400 transition ease-in-out duration-150">
+            <p class="block sm:inline text-sm leading-5 font-medium text-gray-400 transition ease-in-out duration-150">
               @{{ payload.user.username }} ...
 
               <span class="text-xs"> {{ payload.published | timeago }}</span>
@@ -24,8 +23,8 @@
         </div>
       </div>
     </div>
-    <div class="pl-5 sm:pl-16 overflow-hidden p-4">
-      <div [innerHTML]="payload.content" class="text-base width-auto font-medium flex-shrink break-words">
+    <div class="pl-5 sm:pl-16 overflow-hidden p-4 ">
+      <div [innerHTML]="payload.content" class="text-base width-auto font-medium flex-shrink">
 
       </div>
     </div>

@@ -1,5 +1,5 @@
 .tweet-card {
-  @apply w-full p-1 ;
+  @apply w-full p-1 overflow-clip;
 
   .inner{
     @apply rounded-md bg-gray-50 p-1 hover:bg-gray-100;

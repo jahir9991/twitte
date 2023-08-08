@@ -15,7 +15,12 @@ module.exports = {
         "extra-light-gray": "#E1E8ED",
         "bright-gray": "#E1E8ED",
       },
+      
     },
   },
-  plugins: [require("tailwindcss-animated")],
+  plugins: [require("tailwindcss-animated"),
+  require('postcss-import'),
+  require('autoprefixer')
+],
 };
+

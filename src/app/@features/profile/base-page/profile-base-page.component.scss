@@ -1,5 +1,5 @@
 .user-profile {
-  @apply  col-span-3 lg:col-span-2;
+  @apply col-span-3 lg:col-span-2;
 
   .top-bar {
     @apply px-5 py-3 flex items-center gap-8 bg-white bg-opacity-80;
@@ -56,8 +56,7 @@
     @apply w-full;
 
     .profile-menu-wrapper {
-      @apply border-b border-gray-100 px-5 mt-5 w-full sticky top-0 z-10 bg-white;
-     
+      @apply border-b border-gray-100 px-5 mt-5 w-full sticky top-0 z-10 backdrop-filter backdrop-blur-lg;
 
       ul {
         @apply w-full flex  justify-around;
@@ -80,6 +79,6 @@
   }
 }
 
-.infinity{
+.infinity {
   height: 30vh;
 }

@@ -1,17 +1,13 @@
 <div class="col-span-3 lg:col-span-2  h-auto border-t-0 ">
-  <div class="flex bg-white sticky top-0 z-10">
-    <div class="flex-1 m-2">
-      <h2 class="px-4 py-2 text-xl font-semibold">Explore</h2>
-    </div>
+  <app-header [title]="'Explore'" />
 
 
-  </div>
   <hr class="border-gray-200" />
   <div infinite-scroll [infiniteScrollDisabled]="!hasMore$.value" [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
     <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify;">
-      <app-user-card [isFollowing]="item.isFollowing" [payload]="item" [followFeature]="true" (onUnfollowClick)="onUnfollowClick($event)"
-        (onFollowClick)="onFollowClick($event)" />
+      <app-user-card [isFollowing]="item.isFollowing" [payload]="item" [followFeature]="true"
+        (onUnfollowClick)="onUnfollowClick($event)" (onFollowClick)="onFollowClick($event)" />
     </ng-container>
   </div>
 
@@ -24,7 +20,5 @@
       <p class="nodata text-center ">No more user </p>
     </ng-container>
   </div>
-
-
 
 </div>

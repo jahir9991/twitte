@@ -60,17 +60,21 @@
   font-display: "swap";
 }
 
-@import  'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
+@import "node_modules/@ngneat/hot-toast/src/styles/styles.scss";
 
+html {
+  -webkit-text-size-adjust: none;
+  touch-action: manipulation;
+}
 
 .toast-glass {
-@apply px-5 py-3;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(2.5px);
-  -webkit-backdrop-filter: blur(2.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  @apply px-5 py-3;
+  background: rgba(255, 255, 255, 0.71);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.4px);
+  -webkit-backdrop-filter: blur(10.4px);
+  border: 1px solid rgba(255, 255, 255, 0.54);
 }
 
 

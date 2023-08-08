@@ -43,14 +43,14 @@ export class ExplorePageFacade {
       this.hasMore$.next(data.count == this.currentSize$.value);
       this.apiStatus$.next(ApiStatusEnum.LOADED);
     }),
-    map((data: UserResponseModel) =>
-      data.users.map((i: UserEntity) => {
+    // map((data: UserResponseModel) =>
+    //   data.users.map((i: UserEntity) => {
 
-        i.isFollowing = true;
-        return i;
-      })
-    ),
-    // map((data: UserResponseModel) => data.users),
+    //     i.isFollowing = true;
+    //     return i;
+    //   })
+    // ),
+    map((data: UserResponseModel) => data.users),
     scan(
       (acc, data) => (this.currentPage$.value === 1 ? data : [...acc, ...data]),
       []
