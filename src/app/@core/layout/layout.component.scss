@@ -1,5 +1,5 @@
 .root-layout {
-  @apply w-full h-full lg:container ;
+  @apply w-full h-full px-0 lg:px-28;
 
   .wrapper {
     @apply grid grid-cols-6;

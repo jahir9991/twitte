@@ -13,6 +13,8 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
 const routes: Routes = [
   {
     path: 'logout',
+    canActivate: [AuthGuard],
+
     component: LogoutPageComponent,
   },
 

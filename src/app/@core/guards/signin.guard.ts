@@ -24,7 +24,7 @@ export class SigninGuard implements CanActivate {
     console.log('signin called',this.localStorageService.isAuthenticated());
     
     if (this.localStorageService.isAuthenticated()) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home'], { replaceUrl: true });
       return false;
     }
     return true;

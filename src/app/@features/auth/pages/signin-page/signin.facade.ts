@@ -33,7 +33,7 @@ export class SigninFacade {
           this.localStorageService.setToken(res.token);
           this.toastService.success('successfully logged in');
           this.status$.next(ApiStatusEnum.LOADED);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], { replaceUrl: false });
         },
         error: () => {
           this.toastService.error('login failed');
