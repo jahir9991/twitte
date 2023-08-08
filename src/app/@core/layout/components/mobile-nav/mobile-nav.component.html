@@ -5,8 +5,11 @@
         <svg viewBox="0 0 24 24" class="w-6">
           <g>
             <path
-              d="M12 1.696L.622 8.807l1.06 1.696L3 9.679V19.5C3 20.881 4.119 22 5.5 22h13c1.381 0 2.5-1.119 2.5-2.5V9.679l1.318.824 1.06-1.696L12 1.696zM12 16.5c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5z"
-            ></path>
+              d="M12 1.696L.622 8.807l1.06 1.696L3 9.679V19.5C3 20.881 4.119 22 5.5 22h13c1.381
+               0 2.5-1.119 2.5-2.5V9.679l1.318.824 1.06-1.696L12
+                1.696zM12 16.5c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 3.5 1.567 
+                3.5 3.5-1.567 3.5-3.5 3.5z">
+            </path>
           </g>
         </svg>
       </a>
@@ -16,96 +19,71 @@
         <svg viewBox="0 0 24 24" class="w-6">
           <g>
             <path
-              d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"
-            ></path>
+              d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z">
+            </path>
           </g>
         </svg>
       </a>
     </li>
-   
+
     <li>
       <button class="side-menu-btn" (click)="toggleAsideNav()">
-        <img
-          src="/assets/icon-ios.77d25eba.png"
-          alt=""
-        />
+        <img src="/assets/icon-ios.77d25eba.png" alt="" />
       </button>
     </li>
   </ul>
 </div>
 
-<div
-  class="items-wrapper"
-  [ngClass]="
+<div class="items-wrapper" [ngClass]="
     isAsideNav ? 'right-0 items-wrapper' : '-right-[100%] items-wrapper'
-  "
->
+  ">
   <div class="user-content-wrapper">
     <div class="img-wrapper">
-      <img
-        src="/assets/icon-ios.77d25eba.png"
-        alt=""
-      />
-      <button class="add-account-btn rotate-180" (click)="toggleAsideNav()">
-        <svg viewBox="0 0 24 24">
-          <g>
-            <path
-              d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"
-            ></path>
-          </g>
+      <img src="/assets/icon-ios.77d25eba.png" alt="" />
+      <button class="close-btn " (click)="toggleAsideNav()">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 6l-12 12" />
+          <path d="M6 6l12 12" />
         </svg>
       </button>
     </div>
 
-  
+
   </div>
 
   <ul class="nav-list">
     <li class="">
       <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10M9 21h6"
-          />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10M9 21h6" />
         </svg>
         <span>Home</span>
       </a>
     </li>
 
     <li>
-      <a [routerLink]="['/profile',user.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="toggleAsideNav()" class="nav-item">
-        <svg
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          ></path>
+      <a [routerLink]="['/', user?.id]" class="nav-item" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:false,queryParams: 'exact'}" class="nav-item">
+        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
         </svg>
         <span>Profile</span>
       </a>
     </li>
 
     <li>
-      <a [routerLink]="['/logout']"  (click)="toggleAsideNav()" class="nav-item">
-        
+      <a [routerLink]="['/logout']" (click)="toggleAsideNav()" class="nav-item">
+
         <span>Log out</span>
       </a>
     </li>
   </ul>
 </div>
-<div
-  (click)="toggleAsideNav()"
-  [ngClass]="
+<div (click)="toggleAsideNav()" [ngClass]="
     isAsideNav
       ? 'opacity-100 right-0 aside-nav-bg'
       : 'opacity-0 -right-[100%] aside-nav-bg'
-  "
-></div>
+  "></div>

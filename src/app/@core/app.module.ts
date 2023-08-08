@@ -7,22 +7,16 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TimeagoModule } from 'ngx-timeago';
-import { LayoutComponent } from './layout/layout.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AsideNavComponent } from './layout/components/aside-nav/aside-nav.component';
-import { MobileNavComponent } from './layout/components/mobile-nav/mobile-nav.component';
 import { SigninGuard } from './guards/signin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomRouteReuseStrategy } from './rouerStrategy';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    AsideNavComponent,
-    MobileNavComponent,
-    LogoutPageComponent
-  ],
+  declarations: [AppComponent, LogoutPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,8 +25,16 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
     ReactiveFormsModule,
     InfiniteScrollModule,
     TimeagoModule.forRoot(),
+    HotToastModule.forRoot({
+      position: 'top-right',
+      className: 'toast-glass',
+    }),
   ],
   providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomRouteReuseStrategy,
+    },
     [
       {
         provide: HTTP_INTERCEPTORS,

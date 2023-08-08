@@ -1,65 +1,58 @@
-<div class="grid grid-cols-3 w-full">
-  <div class="user-profile">
-    
-
-    <div class="user-profile-imgs">
-      <div class="cover-img-wrapper">
-        <img src="/assets/icon-ios.77d25eba.png" alt="cover image" />
-      </div>
-
-      <div class="profile-img-wrapper">
-        <img src="/assets/icon-ios.77d25eba.png" alt="" />
-      </div>
-    </div>
-    <div class="edit-btn-wrapper" >
-      <!-- <button *ngIf="myProfile" >Edit profile</button> -->
-      <button *ngIf="!myProfile" >follow</button>
+<div class="user-profile">
+  <div class="user-profile-imgs">
+    <div class="cover-img-wrapper">
+      <img src="/assets/icon-ios.77d25eba.png" alt="cover image" />
     </div>
 
-    <div class="profile-info-content">
-   
-
-      <!-- <div class="follow-wrapper">
-        <a routerLink="/profile/following"> <span>0</span> Following </a>
-        <a routerLink="/profile/follower"> <span>0</span> Follower </a>
-      </div> -->
-    </div>
-
-    <div class="profile-layout-wrapper">
-      <div class="profile-menu-wrapper">
-        <ul>
-          <li>
-            <a
-              [routerLink]="['/profile', userId]"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Tweets</a
-            >
-          </li>
-          <li>
-            <a
-              [routerLink]="['/profile', userId, 'following']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Following</a
-            >
-          </li>
-          <li>
-            <a
-              [routerLink]="['/profile', userId, 'follower']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Follower</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <div class="profile-layout-slot">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="profile-img-wrapper">
+      <img src="/assets/icon-ios.77d25eba.png" alt="" />
     </div>
   </div>
+  <div class="edit-btn-wrapper">
+    <button *ngIf="myProfile">Edit profile</button>
 
-  <div class="hidden lg:block"></div>
+    <ng-container *ngIf="!myProfile">
+
+      <ng-container *ngIf="isFollowing;else notFollowing">
+        <button class="following-btn" (click)="unfollow()">
+          <span>Following</span>
+        </button>
+        <!-- <button class="follow-btn">Unfollow</button> -->
+      </ng-container>
+
+      <ng-template #notFollowing>
+        <button class="follow-btn" (click)="follow()">Follow</button>
+      </ng-template>
+
+    </ng-container>
+
+
+  </div>
+
+  <div class="profile-info-content">
+
+  </div>
+
+  <div class="profile-layout-wrapper ">
+    <div class="profile-menu-wrapper">
+      <ul>
+        <li>
+          <a [routerLink]="['/', userId]" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Tweets</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', userId, 'following']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Following</a>
+        </li>
+        <li>
+          <a [routerLink]="['/', userId, 'followers']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Followers</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile-layout-slot">
+      <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+    </div>
+  </div>
 </div>

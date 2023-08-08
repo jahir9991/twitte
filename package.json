@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@ngneat/hot-toast": "^5.0.2",
+    "@ngneat/overview": "^5.1.1",
     "@ngneat/until-destroy": "^10.0.0",
     "jwt-decode": "^3.1.2",
     "ngx-infinite-scroll": "^16.0.0",

@@ -12,16 +12,12 @@ export class TweetApiService {
 
   constructor(private http: HttpClient) { }
 
-  getTimeline(page: number, size: number): Observable<any> {
-    return this.http.get(this.END_POINT + `timeline?page=${page}&size=${size}`);
-  };
+  // getTimeline(page: number, size: number): Observable<any> {
+  //   return this.http.get(this.END_POINT + `timeline?page=${page}&size=${size}`);
+  // };
 
-  getUserTweets(userId: number, page: number, size: number): Observable<any> {
+  getTweetsByUserId(userId: string, page: number, size: number): Observable<any> {
     return this.http.get(this.END_POINT + `users/${userId}/tweets?page=${page}&size=${size}`);
-  };
-
-  getUserFollowing(page: number, size: number): Observable<any> {
-    return this.http.get(this.END_POINT + `following?page=${page}&size=${size}`);
   };
 
   getUserFollowers(page: number, size: number): Observable<any> {

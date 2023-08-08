@@ -1,40 +1,45 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {
-  BehaviorSubject,
-  catchError,
-  combineLatest,
-  map,
-  of,
-  scan,
-  switchMap,
-  tap,
-} from 'rxjs';
-import { FollowingResponseModel } from 'src/app/@models/followingResponse.model';
-import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
-import { UserFollowingPageFacade } from './user-following-page.facade';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { UserFollowingPageFacade } from './user-following-page.facade';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
+import { UserEntity } from 'src/app/@entities/user.entity';
+import { UntilDestroy } from '@ngneat/until-destroy';
+
+
+
+@UntilDestroy()
 @Component({
   templateUrl: './user-following-page.component.html',
   styleUrls: ['./user-following-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [UserFollowingPageFacade],
 })
 export class UserFollowingPageComponent {
-  constructor(private userFollowingPageFacade: UserFollowingPageFacade) {}
+  constructor(private modalFacade: UserFollowingPageFacade) {}
 
-  currentPageData$ = this.userFollowingPageFacade.currentPageData$;
-  currentPage$ = this.userFollowingPageFacade.currentPage$;
-  currentSize$ = this.userFollowingPageFacade.currentSize$;
-  loading$ = this.userFollowingPageFacade.status$;
-  hasMore$ = this.userFollowingPageFacade.hasMore$;
+  @Input() isMyProfile: boolean;
+  ngAfterViewInit(): void {
+    console.log('UserFollowingPageComponent>isMyprofile', this.isMyProfile);
+  }
 
-  statusEnum = this.userFollowingPageFacade.statusEnum;
+  ApiStatusEnum = ApiStatusEnum;
+
+  currentPageData$ = this.modalFacade.currentPageData$;
+  currentPage$ = this.modalFacade.currentPage$;
+  currentSize$ = this.modalFacade.currentSize$;
+  apiStatus$ = this.modalFacade.apiStatus$;
+  hasMore$ = this.modalFacade.hasMore$;
 
   loadMore() {
-    if (!this.hasMore$.value) return;
-
     this.currentPage$.next(this.currentPage$.value + 1);
   }
 
   identify = (index: number, item: any) => item;
+
+  onUnfollowClick(user: UserEntity) {
+    this.modalFacade.unfollowUser(user);
+  }
+  onFollowClick(user: UserEntity) {
+    this.modalFacade.followUser(user);
+  }
 }

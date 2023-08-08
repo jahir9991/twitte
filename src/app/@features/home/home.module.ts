@@ -5,11 +5,11 @@ import { HomeRoutes } from './home.routing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from 'src/app/@shared/shared.module';
-import { UserListComponent } from './components/user-list/user-list.component';
+import { TweetPostComponent } from './components/tweet-post/tweet-post.component';
 
 @NgModule({
-  declarations: [HomePageComponent, UserListComponent],
-  imports: [CommonModule, SharedModule, HomeRoutes, HttpClientModule],
+  declarations: [HomePageComponent, TweetPostComponent],
+  imports: [CommonModule, SharedModule, HomeRoutes, HttpClientModule,],
   providers: [],
 })
 export class HomeModule {}

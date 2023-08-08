@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
@@ -12,44 +12,29 @@ import {
 import { TimelineResponseModel } from 'src/app/@models/timelineResponse.model';
 import { AuthApiService } from 'src/app/@services/api/auth-api.service';
 import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
+import { HomePageFacade } from './home-page.facade';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [HomePageFacade],
 })
-export class HomePageComponent implements OnInit {
-  constructor(
-    private tweetApiService: TweetApiService,
-    private authApiService: AuthApiService
-  ) {}
-  ngOnInit(): void {}
+export class HomePageComponent {
+  constructor(private modalFacade: HomePageFacade) {}
 
-  currentPage$ = new BehaviorSubject<number>(1);
-  currentSize$ = new BehaviorSubject<number>(10);
-  loading$ = new BehaviorSubject(false);
-  hasMore$ = new BehaviorSubject(true);
+  ApiStatusEnum = ApiStatusEnum;
 
-  currentPageData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
-    switchMap(([currentPage, currentSize]) =>
-      this.tweetApiService.getTimeline(currentPage, currentSize)
-    ),
-    catchError((err) => of([])),
-    tap((data: TimelineResponseModel) => {
-      this.hasMore$.next(data.count == this.currentSize$.value);
-    }),
-    map((data: TimelineResponseModel) => data.timeline),
-    scan(
-      (acc, data) => (this.currentPage$.value === 1 ? data : [...acc, ...data]),
-      []
-    )
-  );
+  currentPageData$ = this.modalFacade.currentPageData$;
+
+  currentPage$ = this.modalFacade.currentPage$;
+  currentSize$ = this.modalFacade.currentSize$;
+  apiStatus$ = this.modalFacade.apiStatus$;
+  hasMore$ = this.modalFacade.hasMore$;
 
   loadMore() {
-    console.log('scroll');
-
-    if (!this.hasMore$.value) return;
-
     this.currentPage$.next(this.currentPage$.value + 1);
   }
 

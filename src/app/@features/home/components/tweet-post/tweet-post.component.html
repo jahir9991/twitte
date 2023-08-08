@@ -1,0 +1,43 @@
+<form [formGroup]="validateForm" (submit)="onSubmit()" class="tweet-form shadow-sm">
+  <div class="relative">
+
+    <!-- <div class="h-full" > -->
+
+
+    <div>
+      <div class="flex">
+        <div class="m-2 w-10 py-1">
+          <img class="inline-block h-10 w-10 rounded-full" src="/assets/icon-ios.77d25eba.png" alt="" />
+        </div>
+        <div class="flex-1 px-2 pt-2 mt-2">
+          <textarea class="bg-transparent text-secondary font-medium text-lg w-full focus:outline-none" rows="2"
+            cols="50" placeholder="What's happening?" formControlName="content" maxlength="160"></textarea>
+
+
+        </div>
+      </div>
+
+
+    </div>
+    <div class="flex">
+
+      <div class="flex-1 ">
+
+        <button class="bg-blue-400 m-4  hover:bg-blue-600 text-white font-bold py-2 px-8 rounded-full  float-right"
+          type="submit" [disabled]="validateForm.invalid">
+          Tweet
+        </button>
+        <p class="text-dark-gray text-sm float-right m-6">
+          {{ validateForm.get("content").value?.length ||0 }}/160
+        </p>
+      </div>
+    </div>
+
+    <div class="h-full w-full absolute top-0 left-0 " *ngIf="(apiStatus$|async)==(ApiStatusEnum.LOADING)">
+      <app-full-loading></app-full-loading>
+
+    </div>
+
+  </div>
+
+</form>

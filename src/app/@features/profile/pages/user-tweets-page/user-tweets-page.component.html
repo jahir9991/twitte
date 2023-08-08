@@ -1,16 +1,16 @@
-<div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
-  <ng-container *ngFor="let tweet of currentPageData$ | async; trackBy: identify">
-    <app-tweet-card [tweet]="tweet" />
+<div infinite-scroll [infiniteScrollDisabled]="!hasMore$.value" [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
+  <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify;">
+    <app-tweet-card [payload]="item" />
   </ng-container>
 </div>
 
-<div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
-  <app-full-loading></app-full-loading>
+<div class="infinity">
+  <ng-container *ngIf="(apiStatus$ | async)===ApiStatusEnum.LOADING">
+    <app-full-loading></app-full-loading>
+  </ng-container>
 
+  <ng-container *ngIf="(hasMore$|async)===false">
+    <p class="nodata text-center ">No more tweet</p>
+  </ng-container>
 </div>
-
-<ng-template #noMoredata>
-  <div class="h-32">
-    <p class="text-center">no more tweet</p>
-  </div>
-</ng-template>

@@ -1,56 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { BehaviorSubject, catchError, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SigninPayloadModel } from 'src/app/@models/signinPayload.model';
-import { SigninResponseModel } from 'src/app/@models/signinResponse.model';
 import { AuthApiService } from 'src/app/@services/api/auth-api.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
-
-enum statusEnum {
-  INIT,
-  LOADING,
-  LOADED,
-  NODATA,
-  ERROR,
-  MIN_LENGTH,
-}
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @UntilDestroy()
 @Injectable()
 export class SigninFacade {
-  statusEnum = statusEnum;
-  status$: BehaviorSubject<statusEnum> = new BehaviorSubject<statusEnum>(
-    statusEnum.INIT
+  status$: BehaviorSubject<ApiStatusEnum> = new BehaviorSubject<ApiStatusEnum>(
+    ApiStatusEnum.INIT
   );
 
   constructor(
     private authApiService: AuthApiService,
     private localStorageService: LocalStorageService,
+    private toastService: HotToastService,
     private router: Router
   ) {}
 
   signIn(value: SigninPayloadModel) {
-    console.log('ff');
-    this.status$.next(statusEnum.LOADING);
+    this.status$.next(ApiStatusEnum.LOADING);
 
     this.authApiService
       .signin(value)
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (res: any) => {
-          console.log(res);
-
           this.localStorageService.setToken(res.token);
-
-          this.status$.next(statusEnum.LOADED);
+          this.toastService.success('successfully logged in');
+          this.status$.next(ApiStatusEnum.LOADED);
           this.router.navigate(['/home']);
         },
         error: () => {
-          this.status$.next(statusEnum.ERROR);
+          this.toastService.error('login failed');
+          this.status$.next(ApiStatusEnum.ERROR);
         },
-      });
-
- 
+      })
+      .add(() => console.log('signin done'));
   }
 }

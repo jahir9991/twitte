@@ -25,11 +25,10 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     const isAuthenticated: any = this.localStorageService.isAuthenticated();
-    console.log('isAuthenticated',isAuthenticated);
-    
+    console.log('isAuthenticated', isAuthenticated);
 
     if (!isAuthenticated) {
-      this.router.navigate(['/logout']);
+      this.router.navigate(['/logout'], { queryParams: { force: true } });
     } else {
       const accessToken: any = this.localStorageService.getToken();
       req = req.clone({

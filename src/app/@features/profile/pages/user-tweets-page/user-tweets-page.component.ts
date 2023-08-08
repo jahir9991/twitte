@@ -1,57 +1,35 @@
-import { Component, Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import {
-  BehaviorSubject,
-  catchError,
-  combineLatest,
-  map,
-  of,
-  scan,
-  switchMap,
-  tap,
-} from 'rxjs';
-import { TweetResponseModel } from 'src/app/@models/tweetResponse.model';
-import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+} from '@angular/core';
+import { UserTweetsPageFacade } from './user-tweets-page.facade';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @Component({
   templateUrl: './user-tweets-page.component.html',
   styleUrls: ['./user-tweets-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UserTweetsPageFacade],
 })
-export class UserTweetsPageComponent {
-  constructor(
-    private tweetApiService: TweetApiService,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
-    this.userId = parseInt(this.route.snapshot.paramMap.get('id'));
+export class UserTweetsPageComponent implements AfterViewInit {
+  constructor(private modalFacade: UserTweetsPageFacade) {}
+  @Input() isMyProfile;
+  ngAfterViewInit(): void {
+    console.log('UserTweetsPageComponent>isMyprofile',this.isMyProfile);
   }
+  
+  ApiStatusEnum = ApiStatusEnum;
 
-  userId: number;
+  currentPageData$ = this.modalFacade.currentPageData$;
 
-  currentPage$ = new BehaviorSubject<number>(1);
-  currentSize$ = new BehaviorSubject<number>(10);
-  loading$ = new BehaviorSubject(false);
-  hasMore$ = new BehaviorSubject(true);
-
-  currentPageData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
-    switchMap(([currentPage, currentSize]) =>
-      this.tweetApiService.getUserTweets(this.userId, currentPage, currentSize)
-    ),
-    catchError((err) => of([])),
-    tap((data: TweetResponseModel) => {
-      this.hasMore$.next(data.count == this.currentSize$.value);
-    }),
-    map((data: TweetResponseModel) => data.tweets),
-    scan(
-      (acc, data) => (this.currentPage$.value === 1 ? data : [...acc, ...data]),
-      []
-    )
-  );
+  currentPage$ = this.modalFacade.currentPage$;
+  currentSize$ = this.modalFacade.currentSize$;
+  apiStatus$ = this.modalFacade.apiStatus$;
+  hasMore$ = this.modalFacade.hasMore$;
 
   loadMore() {
-    if (!this.hasMore$.value) return;
-
     this.currentPage$.next(this.currentPage$.value + 1);
   }
 

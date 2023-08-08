@@ -20,7 +20,7 @@ export class SignupPageComponent implements OnInit {
   ) {}
 
   status$ = this.modelfacade.status$;
-  statusEnum = this.modelfacade.statusEnum;
+  apiStatusEnum = this.modelfacade.apiStatusEnum;
 
   ngOnInit(): void {
     this.validateForm = this.formBuilder.group({

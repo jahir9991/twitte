@@ -1,1 +1,26 @@
-<p>logging out!</p>
+<div class="logout-modal">
+    <div class="content-wrapper">
+        <div class="logo-wrapper">
+            <img src="../../../../../assets/icon-svg.svg" alt="logo" />
+          </div>
+
+
+        <div class="body-wrapper relative">
+
+            <h3>Log out of Twitter?</h3>
+
+            <p class="context-text">
+                You can always log back in at any time. If you just want to switch accounts, you can do that by adding
+                an existing account.
+            </p>
+
+            <button class="login-btn" (click)="logout()"> Log out </button>
+            <br>
+
+            <button class="cancel-btn" (click)="gotoBack()" > Cancel </button>
+
+        </div>
+
+    </div>
+
+</div>

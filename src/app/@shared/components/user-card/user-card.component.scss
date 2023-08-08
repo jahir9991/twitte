@@ -1,8 +1,8 @@
 .user-card {
-  @apply p-2;
+  @apply p-1;
 
-  .inner{
-    @apply rounded-md bg-gray-100 p-2 hover:bg-gray-200 flex justify-between items-center gap-2 px-4 py-3;
+  .inner {
+    @apply rounded-md bg-gray-50 hover:bg-gray-100 p-1  flex justify-between items-center gap-2 px-4 py-3;
   }
 
   .user-info {
@@ -22,7 +22,19 @@
     }
   }
 
-  .follow-btn {
-    @apply py-2 px-6 font-semibold rounded-full border border-bright-gray;
-  }
+  // .following-btn {
+  //   @apply w-36 bg-white hover:bg-red-100 py-1 px-3 font-semibold rounded-full border border-bright-gray
+  //            hover:border-red-500 hover:text-red-800;
+  //   &:hover span {
+  //     display: none;
+  //   }
+  //   &:hover:before {
+  //     content: "Unfollow";
+  //   }
+  // }
+
+  // .follow-btn {
+  //   @apply w-36 bg-secondary text-white py-1 px-3 font-semibold rounded-full border border-bright-gray
+  //              hover:bg-opacity-95;
+  // }
 }

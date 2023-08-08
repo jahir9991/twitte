@@ -1,33 +1,33 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, catchError, combineLatest, map, of, scan, switchMap, tap } from 'rxjs';
-import { FollowerResponseModel } from 'src/app/@models/followerResponse.model';
-import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UserFollowerPageFacade } from './user-follower-page.facade';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
+import { UserEntity } from 'src/app/@entities/user.entity';
 
 @Component({
   templateUrl: './user-follower-page.component.html',
   styleUrls: ['./user-follower-page.component.scss'],
-  providers:[UserFollowerPageFacade]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UserFollowerPageFacade],
 })
 export class UserFollowerPageComponent {
-  constructor(private modelFacade: UserFollowerPageFacade
-  ) { }
+  constructor(private modalFacade: UserFollowerPageFacade) {}
+  ApiStatusEnum = ApiStatusEnum;
 
-
-  currentPageData$ = this.modelFacade.currentPageData$;
-  status$ = this.modelFacade.status$;
-  statusEnum = this.modelFacade.statusEnum;
-
-  currentPage$ = this.modelFacade.currentPage$;
-  currentSize$ = new BehaviorSubject<number>(10);
-  hasMore$ = this.modelFacade.hasMore$;
-
+  currentPageData$ = this.modalFacade.currentPageData$;
+  currentPage$ = this.modalFacade.currentPage$;
+  currentSize$ = this.modalFacade.currentSize$;
+  apiStatus$ = this.modalFacade.apiStatus$;
+  hasMore$ = this.modalFacade.hasMore$;
 
   loadMore() {
-    if (!this.hasMore$.value) return;
-
     this.currentPage$.next(this.currentPage$.value + 1);
+  }
+
+  onUnfollowClick(user: UserEntity) {
+    this.modalFacade.unfollowUser(user);
+  }
+  onFollowClick(user: UserEntity) {
+    this.modalFacade.followUser(user);
   }
 
   identify = (index: number, item: any) => item;

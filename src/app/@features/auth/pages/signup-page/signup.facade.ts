@@ -8,21 +8,20 @@ import { SignupResponseModel } from 'src/app/@models/signupResponse.model';
 import { AuthApiService } from 'src/app/@services/api/auth-api.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
-enum statusEnum {
+ enum apiStatusEnum {
   INIT,
   LOADING,
   LOADED,
   NODATA,
   ERROR,
-  MIN_LENGTH,
 }
 
 @UntilDestroy()
 @Injectable()
 export class SignupFacade {
-  statusEnum = statusEnum;
-  status$: BehaviorSubject<statusEnum> = new BehaviorSubject<statusEnum>(
-    statusEnum.INIT
+  apiStatusEnum = apiStatusEnum;
+  status$: BehaviorSubject<apiStatusEnum> = new BehaviorSubject<apiStatusEnum>(
+    apiStatusEnum.INIT
   );
 
   constructor(
@@ -32,7 +31,7 @@ export class SignupFacade {
   ) {}
 
   signup(value: SignupPayloadModel) {
-    this.status$.next(statusEnum.LOADING);
+    this.status$.next(apiStatusEnum.LOADING);
 
     this.authApiService
       .signup(value)
@@ -40,15 +39,14 @@ export class SignupFacade {
       .subscribe({
         next: (res: SignupResponseModel) => {
         
-
           if (res.message === 'successful') {
             this.router.navigate(['/auth/signin']);
           } else {
-            this.status$.next(statusEnum.ERROR);
+            this.status$.next(apiStatusEnum.ERROR);
           }
         },
         error: () => {
-          this.status$.next(statusEnum.ERROR);
+          this.status$.next(apiStatusEnum.ERROR);
         },
       });
   }
