@@ -5,10 +5,9 @@ import { HomeRoutes } from './home.routing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from 'src/app/@shared/shared.module';
-import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
-  declarations: [HomePageComponent, UserListComponent],
+  declarations: [HomePageComponent],
   imports: [CommonModule, SharedModule, HomeRoutes, HttpClientModule],
   providers: [],
 })

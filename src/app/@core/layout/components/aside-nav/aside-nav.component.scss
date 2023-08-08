@@ -2,29 +2,28 @@
   @apply h-screen overflow-hidden sticky left-0 top-0 w-auto flex flex-col justify-between;
 
   .aside-nav {
-    @apply mt-5 px-2;
+    @apply mt-5  px-8 md:px-2;
 
     .nav-item {
-
       @apply mt-1 flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-gray-200;
-      &.active{
-        @apply  font-extrabold ; 
-       }
+      &.active {
+        @apply font-extrabold;
+      }
       span {
-        @apply hidden lg:block;
+        @apply hidden md:block;
       }
     }
 
-    .tweet-btn {
-      @apply hidden lg:block bg-blue-400 w-48 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full;
+    .logout-btn {
+      @apply hidden md:block bg-gray-950 w-48 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full;
     }
   }
 
   .user-profile-icon {
-    @apply flex-shrink-0 flex justify-between items-center  rounded-full p-4 mt-12 mr-2 mb-5 w-full;
+    @apply bg-extra-light-gray flex-shrink-0 flex justify-between items-center  rounded-full p-2   ;
 
     .logout-option-btn {
-      @apply w-8 h-8 rounded-full flex items-center justify-center hover:bg-light-gray hover:stroke-white transition-all;
+      @apply w-8 h-8 rounded-full flex items-center justify-center  hover:stroke-white transition-all;
 
       svg {
         @apply w-6 stroke-secondary;
@@ -32,4 +31,19 @@
     }
   }
 }
+.avatar-menu {
+  @apply  absolute shadow-2xl rounded-md border bg-white   w-[90%]  bottom-[110%] right-[5%] py-2;
 
+  // box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px,
+  //   rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+
+  svg {
+    @apply absolute w-6 h-5 -bottom-3.5 text-white text-sm fill-white  left-2/3 rotate-180;
+    // transform: rotate(180deg);
+    // filter: drop-shadow(rgb(207, 217, 222) 1px -1px 1px);
+  }
+
+  a {
+    @apply text-center font-semibold w-full p-2 hover:bg-gray-100  block;
+  }
+}

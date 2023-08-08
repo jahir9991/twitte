@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { UserFollowingPageFacade } from './user-following-page.facade';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
@@ -11,6 +11,12 @@ import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 })
 export class UserFollowingPageComponent {
   constructor(private modalFacade: UserFollowingPageFacade) {}
+
+  @Input() isMyProfile: boolean;
+  ngAfterViewInit(): void {
+    console.log('UserFollowingPageComponent>isMyprofile', this.isMyProfile);
+  }
+
   ApiStatusEnum = ApiStatusEnum;
 
   currentPageData$ = this.modalFacade.currentPageData$;

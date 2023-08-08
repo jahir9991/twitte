@@ -26,7 +26,7 @@ enum statusEnum {
 }
 
 @Injectable()
-export class UserListFacade {
+export class SearchFacade {
   statusEnum = statusEnum;
 
   currentPage$: BehaviorSubject<number> = new BehaviorSubject<number>(1);

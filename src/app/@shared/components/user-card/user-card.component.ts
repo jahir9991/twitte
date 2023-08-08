@@ -10,5 +10,5 @@ import { UserEntity } from 'src/app/@entities/user.entity';
 export class UserCardComponent {
   @Input() payload: UserEntity;
   @Input() followFeature: boolean=false;
-  @Input() isFollowed: boolean;
+  @Input() isFollowing: boolean;
 }

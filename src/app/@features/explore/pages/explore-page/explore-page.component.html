@@ -1,5 +1,5 @@
-<div class="grid grid-cols-3 h-full">
-  <div class="col-span-3 lg:col-span-2  h-auto border-t-0 shadow-md">
+
+  <div class="">
     <div class="flex bg-white sticky top-0 z-10">
       <div class="flex-1 m-2">
         <h2 class="px-4 py-2 text-xl font-semibold">Explore</h2>
@@ -11,7 +11,7 @@
 
     <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
       <ng-container *ngFor="let item of (currentPageData$ | async);trackBy:identify">
-        <app-user-card [payload]="item" [followFeature]="true" [isFollowed]="false"></app-user-card>
+        <app-user-card [payload]="item" [followFeature]="true" [isFollowing]="false"></app-user-card>
       </ng-container>
     </div>
 
@@ -25,4 +25,3 @@
     </ng-template>
   </div>
 
-</div>

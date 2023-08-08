@@ -12,13 +12,18 @@
     </a>
 
     <ng-container *ngIf="followFeature">
-      <ng-container *ngIf="isFollowed;else unFollowed">
-        <button class="follow-btn" [routerLink]="['/', payload.id]">Unfollow</button>
+
+      <ng-container *ngIf="isFollowing;else notFollowing">
+        <button class="following-btn" >
+          <span>Following</span>
+        </button>
+        <!-- <button class="follow-btn">Unfollow</button> -->
       </ng-container>
 
-      <ng-template #unFollowed>
-        <button class="follow-btn" [routerLink]="['/', payload.id]">Follow</button>
+      <ng-template #notFollowing>
+        <button class="follow-btn">Follow</button>
       </ng-template>
+
     </ng-container>
 
 

@@ -21,10 +21,10 @@ export class ProfileBasePageComponent {
     this.userId = this.activeRoute.snapshot.paramMap.get('id');
     this.user = this.localStorageService.getUser();
     this.myProfile = this.userId == this.user.id;
-
-    this.activeRoute.params.subscribe((routeParams) => {
-      console.log('ProfileBasePageComponent', routeParams);
-    });
   }
   isAuthenticated = this.localStorageService.isAuthenticated();
+
+  onOutletLoaded(component) {
+    component.isMyProfile = this.userId == this.user.id;
+  }
 }

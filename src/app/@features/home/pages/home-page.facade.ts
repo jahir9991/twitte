@@ -9,43 +9,34 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { TimelineResponseModel } from 'src/app/@models/timelineResponse.model';
+import { TweetResponseModel } from 'src/app/@models/tweetResponse.model';
 import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
-import { FollowingResponseModel } from 'src/app/@models/followingResponse.model';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
-import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
-export class UserFollowingPageFacade {
+export class HomePageFacade {
   currentPage$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
   currentSize$: BehaviorSubject<number> = new BehaviorSubject<number>(20);
   apiStatus$: BehaviorSubject<ApiStatusEnum> =
     new BehaviorSubject<ApiStatusEnum>(ApiStatusEnum.INIT);
   hasMore$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+
   userId: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private tweetApiService: TweetApiService
-  ) {    
-    this.userId = this.route.parent.snapshot.paramMap.get('id');
-    
-  }
+  constructor(private tweetApiService: TweetApiService) {}
 
   currentPageData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
     tap(() => this.apiStatus$.next(ApiStatusEnum.LOADING)),
     switchMap(([currentPage, currentSize]) =>
-      this.tweetApiService.getFollowingsByUserId(
-        this.userId,
-        currentPage,
-        currentSize
-      )
+      this.tweetApiService.getTimeline(currentPage, currentSize)
     ),
     catchError((err) => of([])),
-    tap((data: FollowingResponseModel) => {
+    tap((data: TimelineResponseModel) => {
       this.hasMore$.next(data.count == this.currentSize$.value);
       this.apiStatus$.next(ApiStatusEnum.LOADED);
     }),
-    map((data: FollowingResponseModel) => data.followings),
+    map((data: TimelineResponseModel) => data.timeline),
     scan(
       (acc, data) => (this.currentPage$.value === 1 ? data : [...acc, ...data]),
       []

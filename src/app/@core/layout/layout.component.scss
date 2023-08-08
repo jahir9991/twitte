@@ -1,15 +1,18 @@
 .root-layout {
-  @apply w-full container;
+  @apply w-full h-full lg:container ;
 
   .wrapper {
-    @apply grid grid-cols-12;
+    @apply grid grid-cols-6;
 
     .aside-nav-wrapper {
-      @apply hidden sm:block col-span-2 lg:col-span-3  relative;
+      @apply hidden sm:block  sm:col-span-1 relative;
     }
 
     .layout-slot {
-      @apply col-span-12 sm:col-span-10 lg:col-span-9 h-full w-full;
+      @apply col-span-6 sm:col-span-5  md:col-span-3  h-full w-full shadow-md ;
+    }
+    .search-slot {
+      @apply  hidden md:block col-span-2 ;
     }
   }
 }

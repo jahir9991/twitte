@@ -1,17 +1,25 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+} from '@angular/core';
 import { UserTweetsPageFacade } from './user-tweets-page.facade';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @Component({
   templateUrl: './user-tweets-page.component.html',
   styleUrls: ['./user-tweets-page.component.scss'],
-  providers: [UserTweetsPageFacade],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UserTweetsPageFacade],
 })
-export class UserTweetsPageComponent {
-  constructor(
-    private modalFacade: UserTweetsPageFacade
-  ) {}
+export class UserTweetsPageComponent implements AfterViewInit {
+  constructor(private modalFacade: UserTweetsPageFacade) {}
+  @Input() isMyProfile;
+  ngAfterViewInit(): void {
+    console.log('UserTweetsPageComponent>isMyprofile',this.isMyProfile);
+  }
+  
   ApiStatusEnum = ApiStatusEnum;
 
   currentPageData$ = this.modalFacade.currentPageData$;

@@ -13,9 +13,9 @@ const routes: Routes = [
       {
         path: '',
         component: UserTweetsPageComponent,
-        data: {
-          shouldCached: true
-        },
+        // data: {
+        //   shouldCached: true
+        // },
       },
       {
         path: 'following',

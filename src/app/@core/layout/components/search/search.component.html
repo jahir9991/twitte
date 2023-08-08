@@ -1,5 +1,4 @@
-<div class="  right-0">
-
+<div class=" h-screen sticky top-0 right-0">
 
     <div class="relative text-gray-600 w-full p-5 pb-0 mr-16">
         <button type="submit" class="absolute ml-4 mt-3 mr-4">
@@ -27,12 +26,12 @@
 
         <div style="height:70vh;" class=" overflow-y-scroll">
             <div class="h-full" *ngIf="(status$|async)==(statusEnum.LOADING)">
-                <app-full-loading></app-full-loading>
+                <!-- <app-full-loading></app-full-loading> -->
 
             </div>
 
             <ng-container *ngFor="let item of (currentPageData$ | async);trackBy:identify">
-                <app-user-card [payload]="item"></app-user-card>
+                <!-- <app-user-card [payload]="item"></app-user-card> -->
                 <hr class="border-gray-200" />
             </ng-container>
             <div class="text-center text-gray-600">

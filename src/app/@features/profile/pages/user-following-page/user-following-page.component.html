@@ -1,7 +1,7 @@
 <div infinite-scroll [infiniteScrollDisabled]="!hasMore$.value" [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
   <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify;">
-    <app-user-card [payload]="item" />
+    <app-user-card [payload]="item" [followFeature]="true" [isFollowing]="isMyProfile" />
   </ng-container>
 </div>
 

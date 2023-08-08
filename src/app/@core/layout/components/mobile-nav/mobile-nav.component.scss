@@ -11,6 +11,7 @@
     li {
       @apply flex justify-center items-center h-full w-full;
       a {
+        @apply p-2;
         svg {
           @apply w-7;
         }
@@ -41,6 +42,13 @@
           @apply w-8 stroke-dark-gray fill-none;
         }
       }
+      .close-btn {
+        @apply  p-1 rounded-full bg-gray-100 hover:bg-gray-200;
+
+        svg {
+          @apply fill-none stroke-secondary w-10;
+        }
+      }
     }
 
     .info {
@@ -56,7 +64,7 @@
     @apply mt-10;
 
     .nav-item {
-      @apply flex gap-3 items-center py-3 w-full;
+      @apply flex gap-3 items-center py-3 px-2 w-full rounded-md;
 
       svg {
         @apply w-8;
@@ -71,10 +79,10 @@
 .aside-nav-bg {
   @apply w-full bg-black bg-opacity-50 h-screen fixed top-0 z-10 transition-opacity;
 }
-.active{
-  @apply  bg-gray-200 ;
- }
+.active {
+  @apply bg-gray-200;
+}
 
- .bar-active{
-  @apply  bg-gray-200 p-4 rounded-full;
- }
+.bar-active {
+  @apply bg-gray-200  rounded-full;
+}

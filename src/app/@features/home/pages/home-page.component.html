@@ -1,34 +1,30 @@
-<div class="grid grid-cols-3 relative">
-  <div class="col-span-3 lg:col-span-2 h-auto border-t-0 shadow-md">
-
-
-    <div class="flex bg-white sticky top-0 z-10 ">
-      <div class="flex-1 m-2">
-        <h2 class="px-4 py-2 text-xl font-semibold">Home</h2>
-      </div>
-
-    </div>
-    <hr class="border-gray-200" />
-
-    <app-tweet-post />
-    <br>
-    <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
-      <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify">
-        <app-tweet-card [payload]="item" />
-      </ng-container>
-
+<div class=" relative">
+  <div class="flex bg-white sticky top-0 z-10 shadow-sm">
+    <div class="flex-1 m-2">
+      <h2 class="px-4 py-2 text-xl font-semibold">Home</h2>
     </div>
 
-    <div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
+  </div>
+  <!-- <hr class="border-gray-200" /> -->
+
+  <app-tweet-post />
+
+
+  <div infinite-scroll [infiniteScrollDisabled]="!hasMore$.value" [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
+    <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify;">
+      <app-tweet-card [payload]="item" />
+    </ng-container>
+  </div>
+
+  <div class="infinity">
+    <ng-container *ngIf="(apiStatus$ | async)===ApiStatusEnum.LOADING">
       <app-full-loading></app-full-loading>
-    </div>
-    <ng-template #noMoredata>
-      <div class="h-32">
-        <p class="text-center">no more tweet</p>
-      </div>
-    </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="(hasMore$|async)===false">
+      <p class="nodata text-center ">No more tweet</p>
+    </ng-container>
   </div>
-  <div class="col-span-1 h-screen hidden lg:block sticky top-0 right-0">
-    <app-user-list></app-user-list>
-  </div>
+
 </div>
