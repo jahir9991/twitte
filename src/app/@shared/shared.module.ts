@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { UserCardComponent } from './components/user-card/user-card.component';
-import { TweetPostComponent } from './components/tweet-post/tweet-post.component';
+import { TweetPostComponent } from '../@features/home/components/tweet-post/tweet-post.component';
 import { TweetCardComponent } from './components/tweet-card/tweet-card.componet';
 import { TimeagoModule } from 'ngx-timeago';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -10,12 +10,7 @@ import { FullLoadingComponent } from './components/full-loading/full-loading.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    UserCardComponent,
-    TweetPostComponent,
-    TweetCardComponent,
-    FullLoadingComponent,
-  ],
+  declarations: [UserCardComponent, TweetCardComponent, FullLoadingComponent],
   imports: [
     RouterModule,
     CommonModule,
@@ -27,10 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [],
   exports: [
     UserCardComponent,
-    TweetPostComponent,
+
     TweetCardComponent,
     FullLoadingComponent,
     InfiniteScrollModule,
+    ReactiveFormsModule
   ],
 })
 export class SharedModule {}

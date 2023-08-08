@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UserFollowerPageFacade } from './user-follower-page.facade';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
+import { UserEntity } from 'src/app/@entities/user.entity';
 
 @Component({
   templateUrl: './user-follower-page.component.html',
@@ -20,6 +21,13 @@ export class UserFollowerPageComponent {
 
   loadMore() {
     this.currentPage$.next(this.currentPage$.value + 1);
+  }
+
+  onUnfollowClick(user: UserEntity) {
+    this.modalFacade.unfollowUser(user);
+  }
+  onFollowClick(user: UserEntity) {
+    this.modalFacade.followUser(user);
   }
 
   identify = (index: number, item: any) => item;

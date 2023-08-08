@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
   DetachedRouteHandle,
   RouteReuseStrategy,
   RouterModule,

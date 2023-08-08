@@ -59,3 +59,33 @@
   font-style: "normal";
   font-display: "swap";
 }
+
+@import  'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
+
+
+.toast-glass {
+@apply px-5 py-3;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+.following-btn {
+  @apply w-36 bg-white hover:bg-red-100 py-1 px-3 font-semibold rounded-full border border-bright-gray
+           hover:border-red-500 hover:text-red-800;
+  &:hover span {
+    display: none;
+  }
+  &:hover:before {
+    content: "Unfollow";
+  }
+}
+
+.follow-btn {
+  @apply w-36 bg-secondary text-white py-1 px-3 font-semibold rounded-full border border-bright-gray
+             hover:bg-opacity-95;
+}

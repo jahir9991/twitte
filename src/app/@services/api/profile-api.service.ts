@@ -9,7 +9,7 @@ import { LocalStorageService } from '../local-storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthApiService {
+export class ProfileApiService {
   private readonly END_POINT = ENV.API_ENDPOINT;
   constructor(
     private http: HttpClient,
@@ -17,12 +17,18 @@ export class AuthApiService {
     private localStorageService: LocalStorageService
   ) {}
 
-  signin(payload: SigninPayloadModel): Observable<any> {
-    return this.http.post<any>(this.END_POINT + `login`, payload);
-  }
-  signup(payload: SigninPayloadModel): Observable<any> {
-    return this.http.post<any>(this.END_POINT + `signup`, payload);
+  getMyTimeline(page: number, size: number): Observable<any> {
+    return this.http.get(this.END_POINT + `timeline?page=${page}&size=${size}`);
   }
 
-  
+  getMyFollowers(page: number, size: number): Observable<any> {
+    return this.http.get(
+      this.END_POINT + `followers?page=${page}&size=${size}`
+    );
+  }
+  getMyFollowings(page: number, size: number): Observable<any> {
+    return this.http.get(
+      this.END_POINT + `followings?page=${page}&size=${size}`
+    );
+  }
 }

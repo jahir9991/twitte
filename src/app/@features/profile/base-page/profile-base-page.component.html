@@ -9,8 +9,24 @@
     </div>
   </div>
   <div class="edit-btn-wrapper">
-    <!-- <button *ngIf="myProfile" >Edit profile</button> -->
-    <button *ngIf="!myProfile">follow</button>
+    <button *ngIf="myProfile">Edit profile</button>
+
+    <ng-container *ngIf="!myProfile">
+
+      <ng-container *ngIf="isFollowing;else notFollowing">
+        <button class="following-btn" (click)="unfollow()">
+          <span>Following</span>
+        </button>
+        <!-- <button class="follow-btn">Unfollow</button> -->
+      </ng-container>
+
+      <ng-template #notFollowing>
+        <button class="follow-btn" (click)="follow()">Follow</button>
+      </ng-template>
+
+    </ng-container>
+
+
   </div>
 
   <div class="profile-info-content">

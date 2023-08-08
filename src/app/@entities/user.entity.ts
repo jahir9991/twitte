@@ -1,6 +1,7 @@
 export type UserEntity = {
-    active: boolean;
-    email: string;
-    id: string;
-    username: string;
-  };
+  active: boolean;
+  email: string;
+  id: string;
+  username: string;
+  isFollowing?: boolean;
+};

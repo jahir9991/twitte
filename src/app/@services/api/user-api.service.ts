@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { UserResponseModel } from 'src/app/@models/userResponse.model';
 import { ENV } from 'src/environments/environment';
 
 @Injectable({
@@ -15,6 +14,26 @@ export class UserApiService {
   getUsers(page: number, size: number): Observable<any> {
     return this.http.get(this.END_POINT + `users?page=${page}&size=${size}`);
   }
+
+  getFollowingsByUserId(
+    userId: string,
+    page: number,
+    size: number
+  ): Observable<any> {
+    return this.http.get(
+      this.END_POINT + `users/${userId}/following?page=${page}&size=${size}`
+    );
+  }
+  getFollowersByUserId(
+    userId: string,
+    page: number,
+    size: number
+  ): Observable<any> {
+    return this.http.get(
+      this.END_POINT + `users/${userId}/followers?page=${page}&size=${size}`
+    );
+  }
+
   getUsersBySearch(
     page: number,
     size: number,
@@ -22,6 +41,17 @@ export class UserApiService {
   ): Observable<any> {
     return this.http.post(this.END_POINT + `search?page=${page}&size=${size}`, {
       token: searchTerm,
+    });
+  }
+
+  followUser(userId: string): Observable<any> {
+    return this.http.post(this.END_POINT + `follow`, {
+      user_id: userId,
+    });
+  }
+  unfollowUser(userId: string): Observable<any> {
+    return this.http.post(this.END_POINT + `unfollow`, {
+      user_id: userId,
     });
   }
 }

@@ -6,6 +6,11 @@ const storagePrefix = ENV.SESSION_STORAGE_PREFIX;
   providedIn: 'root',
 })
 export class LocalStorageService {
+  // logoutForce() {
+  //   this.clearAll();
+  //   window.location.href = '/auth';
+  // }
+
   isAuthenticated() {
     return this.isTokenValid();
   }

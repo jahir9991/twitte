@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { BehaviorSubject, catchError, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SigninPayloadModel } from 'src/app/@models/signinPayload.model';
-import { SigninResponseModel } from 'src/app/@models/signinResponse.model';
 import { AuthApiService } from 'src/app/@services/api/auth-api.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
@@ -18,6 +18,7 @@ export class SigninFacade {
   constructor(
     private authApiService: AuthApiService,
     private localStorageService: LocalStorageService,
+    private toastService: HotToastService,
     private router: Router
   ) {}
 
@@ -29,14 +30,13 @@ export class SigninFacade {
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (res: any) => {
-          console.log(res);
-
           this.localStorageService.setToken(res.token);
-
+          this.toastService.success('successfully logged in');
           this.status$.next(ApiStatusEnum.LOADED);
           this.router.navigate(['/home']);
         },
         error: () => {
+          this.toastService.error('login failed');
           this.status$.next(ApiStatusEnum.ERROR);
         },
       })

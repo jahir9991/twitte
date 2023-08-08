@@ -59,7 +59,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   console.log(future['_routerState']?.url);
   console.log(current['_routerState']?.url);
   
-    return false;
+    // return false;
     return future['_routerState']?.url === current['_routerState']?.url;
   }
 

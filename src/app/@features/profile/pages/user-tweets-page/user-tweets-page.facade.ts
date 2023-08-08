@@ -22,7 +22,7 @@ import { FollowerResponseModel } from 'src/app/@models/followerResponse.model';
 import { FollowingResponseModel } from 'src/app/@models/followingResponse.model';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 import { TweetResponseModel } from 'src/app/@models/tweetResponse.model';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class UserTweetsPageFacade {

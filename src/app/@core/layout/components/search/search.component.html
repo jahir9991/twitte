@@ -26,12 +26,12 @@
 
         <div style="height:70vh;" class=" overflow-y-scroll">
             <div class="h-full" *ngIf="(status$|async)==(statusEnum.LOADING)">
-                <!-- <app-full-loading></app-full-loading> -->
-
+                <app-full-loading></app-full-loading>
             </div>
 
             <ng-container *ngFor="let item of (currentPageData$ | async);trackBy:identify">
-                <!-- <app-user-card [payload]="item"></app-user-card> -->
+                <app-user-card [payload]="item" [followFeature]="true" (onUnfollowClick)="onUnfollowClick($event)"
+                    (onFollowClick)="onFollowClick($event)" />
                 <hr class="border-gray-200" />
             </ng-container>
             <div class="text-center text-gray-600">

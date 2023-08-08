@@ -10,7 +10,7 @@ import {
   tap,
 } from 'rxjs';
 import { TimelineResponseModel } from 'src/app/@models/timelineResponse.model';
-import { TweetResponseModel } from 'src/app/@models/tweetResponse.model';
+import { ProfileApiService } from 'src/app/@services/api/profile-api.service';
 import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
@@ -24,12 +24,12 @@ export class HomePageFacade {
 
   userId: string;
 
-  constructor(private tweetApiService: TweetApiService) {}
+  constructor(private profileApiService: ProfileApiService) {}
 
   currentPageData$ = combineLatest([this.currentPage$, this.currentSize$]).pipe(
     tap(() => this.apiStatus$.next(ApiStatusEnum.LOADING)),
     switchMap(([currentPage, currentSize]) =>
-      this.tweetApiService.getTimeline(currentPage, currentSize)
+      this.profileApiService.getMyTimeline(currentPage, currentSize)
     ),
     catchError((err) => of([])),
     tap((data: TimelineResponseModel) => {
