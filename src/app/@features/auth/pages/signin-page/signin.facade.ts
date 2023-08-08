@@ -6,22 +6,13 @@ import { SigninPayloadModel } from 'src/app/@models/signinPayload.model';
 import { SigninResponseModel } from 'src/app/@models/signinResponse.model';
 import { AuthApiService } from 'src/app/@services/api/auth-api.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
-
-enum statusEnum {
-  INIT,
-  LOADING,
-  LOADED,
-  NODATA,
-  ERROR,
-  MIN_LENGTH,
-}
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @UntilDestroy()
 @Injectable()
 export class SigninFacade {
-  statusEnum = statusEnum;
-  status$: BehaviorSubject<statusEnum> = new BehaviorSubject<statusEnum>(
-    statusEnum.INIT
+  status$: BehaviorSubject<ApiStatusEnum> = new BehaviorSubject<ApiStatusEnum>(
+    ApiStatusEnum.INIT
   );
 
   constructor(
@@ -31,8 +22,7 @@ export class SigninFacade {
   ) {}
 
   signIn(value: SigninPayloadModel) {
-    console.log('ff');
-    this.status$.next(statusEnum.LOADING);
+    this.status$.next(ApiStatusEnum.LOADING);
 
     this.authApiService
       .signin(value)
@@ -43,14 +33,13 @@ export class SigninFacade {
 
           this.localStorageService.setToken(res.token);
 
-          this.status$.next(statusEnum.LOADED);
+          this.status$.next(ApiStatusEnum.LOADED);
           this.router.navigate(['/home']);
         },
         error: () => {
-          this.status$.next(statusEnum.ERROR);
+          this.status$.next(ApiStatusEnum.ERROR);
         },
-      });
-
- 
+      })
+      .add(() => console.log('signin done'));
   }
 }

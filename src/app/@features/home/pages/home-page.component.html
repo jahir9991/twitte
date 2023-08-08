@@ -13,8 +13,8 @@
     <app-tweet-post />
     <br>
     <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
-      <ng-container *ngFor="let tweet of currentPageData$ | async; trackBy: identify">
-        <app-tweet-card [tweet]="tweet" />
+      <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify">
+        <app-tweet-card [payload]="item" />
       </ng-container>
 
     </div>

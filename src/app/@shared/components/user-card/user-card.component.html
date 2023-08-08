@@ -1,15 +1,26 @@
 <div class="user-card animate-fade-up animate-duration-300">
   <div class="inner">
 
-  <a class="user-info" [routerLink]="['/profile', user.id]">
-    <div class="user-img-wrapper">
-      <img src="/assets/icon-ios.77d25eba.png" alt="" />
-    </div>
-    <div class="info-wrapper">
-      <p class="name">{{ user?.username }}</p>
-      <p class="user-name">@{{ user?.username }}</p>
-    </div>
-  </a>
-  <button class="follow-btn" [routerLink]="['/profile', user.id]">Follow</button>
+    <a class="user-info" [routerLink]="['/', payload.id]">
+      <div class="user-img-wrapper">
+        <img src="/assets/icon-ios.77d25eba.png" alt="" />
+      </div>
+      <div class="info-wrapper">
+        <p class="name">{{ payload?.username }}</p>
+        <p class="user-name">@{{ payload?.username }}</p>
+      </div>
+    </a>
+
+    <ng-container *ngIf="followFeature">
+      <ng-container *ngIf="isFollowed;else unFollowed">
+        <button class="follow-btn" [routerLink]="['/', payload.id]">Unfollow</button>
+      </ng-container>
+
+      <ng-template #unFollowed>
+        <button class="follow-btn" [routerLink]="['/', payload.id]">Follow</button>
+      </ng-template>
+    </ng-container>
+
+
   </div>
 </div>

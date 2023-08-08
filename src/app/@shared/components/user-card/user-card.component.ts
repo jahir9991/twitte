@@ -8,5 +8,7 @@ import { UserEntity } from 'src/app/@entities/user.entity';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCardComponent {
-  @Input() user!: UserEntity;
+  @Input() payload: UserEntity;
+  @Input() followFeature: boolean=false;
+  @Input() isFollowed: boolean;
 }

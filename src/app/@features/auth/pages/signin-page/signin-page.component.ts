@@ -3,16 +3,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SigninFacade } from './signin.facade';
 import { SigninPayloadModel } from 'src/app/@models/signinPayload.model';
 import { ENV } from 'src/environments/environment';
+import { makeFormDirty } from 'src/app/@shared/utils';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { interval } from 'rxjs';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
+@UntilDestroy()
 @Component({
   templateUrl: './signin-page.component.html',
   styleUrls: ['./signin-page.component.scss'],
   providers: [SigninFacade],
   changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
 export class SigninPageComponent implements OnInit {
   validateForm!: FormGroup;
+  ApiStatusEnum = ApiStatusEnum;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -20,7 +25,6 @@ export class SigninPageComponent implements OnInit {
   ) {}
 
   status$ = this.modelfacade.status$;
-  statusEnum = this.modelfacade.statusEnum;
 
   ngOnInit(): void {
     this.validateForm = this.formBuilder.group({
@@ -29,26 +33,11 @@ export class SigninPageComponent implements OnInit {
     });
   }
 
-  get signinPayload(): SigninPayloadModel {
-    const formValue = this.validateForm?.value;
-    return {
-      email: formValue?.email,
-      password: formValue?.password,
-    } as SigninPayloadModel;
-  }
-
-  makeformdirty() {
-    for (const i in this.validateForm.controls) {
-      if (this.validateForm.controls.hasOwnProperty(i)) {
-        this.validateForm.controls[i].markAsTouched();
-        this.validateForm.controls[i].updateValueAndValidity();
-      }
-    }
-  }
-
   onSubmit(): void {
-    this.makeformdirty();
-    if (this.validateForm.invalid) return;
+    if (this.validateForm.invalid) {
+      makeFormDirty(this.validateForm);
+      return;
+    }
     this.modelfacade.signIn(this.validateForm.value);
   }
 }

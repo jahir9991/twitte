@@ -1,17 +1,16 @@
-<div>
-  <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
-    <ng-container *ngFor="let user of currentPageData$ | async; trackBy: identify">
-      <app-user-card [user]="user" />
-    </ng-container>
-  </div>
+<div infinite-scroll [infiniteScrollDisabled]="!hasMore$.value" [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
+  <ng-container *ngFor="let item of currentPageData$ | async; trackBy: identify;">
+    <app-user-card [payload]="item" />
+  </ng-container>
+</div>
 
-  <div class="infinity" *ngIf="hasMore$ | async; else noMoredata">
+<div class="infinity">
+  <ng-container *ngIf="(apiStatus$ | async)===ApiStatusEnum.LOADING">
     <app-full-loading></app-full-loading>
-  </div>
+  </ng-container>
 
-  <ng-template #noMoredata>
-    <div class="h-32">
-      <p class="text-center">no more user</p>
-    </div>
-  </ng-template>
+  <ng-container *ngIf="(hasMore$|async)===false">
+    <p class="nodata text-center ">No more user</p>
+  </ng-container>
 </div>

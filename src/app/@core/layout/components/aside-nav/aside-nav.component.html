@@ -35,7 +35,7 @@
       <span>Explore</span>
     </a>
    
-    <a [routerLink]="['./profile', user?.id]" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <a [routerLink]="['/', user?.id]" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false,queryParams: 'exact'}"  > 
       <svg
         class="mr-4 h-6 w-6"
         fill="none"

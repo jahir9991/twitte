@@ -1,6 +1,6 @@
-<div class="grid grid-cols-3 w-full">
-  <div class="user-profile">
-    
+<div class="grid grid-cols-3 h-full">
+  <div class="user-profile shadow-md">
+
 
     <div class="user-profile-imgs">
       <div class="cover-img-wrapper">
@@ -11,46 +11,29 @@
         <img src="/assets/icon-ios.77d25eba.png" alt="" />
       </div>
     </div>
-    <div class="edit-btn-wrapper" >
+    <div class="edit-btn-wrapper">
       <!-- <button *ngIf="myProfile" >Edit profile</button> -->
-      <button *ngIf="!myProfile" >follow</button>
+      <button *ngIf="!myProfile">follow</button>
     </div>
 
     <div class="profile-info-content">
-   
 
-      <!-- <div class="follow-wrapper">
-        <a routerLink="/profile/following"> <span>0</span> Following </a>
-        <a routerLink="/profile/follower"> <span>0</span> Follower </a>
-      </div> -->
     </div>
 
-    <div class="profile-layout-wrapper">
+    <div class="profile-layout-wrapper ">
       <div class="profile-menu-wrapper">
         <ul>
           <li>
-            <a
-              [routerLink]="['/profile', userId]"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Tweets</a
-            >
+            <a [routerLink]="['/', userId]" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">Tweets</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/profile', userId, 'following']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Following</a
-            >
+            <a [routerLink]="['/', userId, 'following']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">Following</a>
           </li>
           <li>
-            <a
-              [routerLink]="['/profile', userId, 'follower']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Follower</a
-            >
+            <a [routerLink]="['/', userId, 'followers']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">Followers</a>
           </li>
         </ul>
       </div>

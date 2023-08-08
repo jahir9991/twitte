@@ -14,13 +14,16 @@
     <div class="login-wrapper relative">
 
 
-      <app-full-loading *ngIf="(status$|async)==statusEnum.LOADING" />
 
 
       <h3>Sing in to X</h3>
 
 
-      <form [formGroup]="validateForm" (submit)="onSubmit()">
+      <form class="relative" [formGroup]="validateForm" (submit)="onSubmit()">
+        <div *ngIf="(status$|async)==ApiStatusEnum.LOADING" class="h-full w-full absolute top-0">
+          <app-full-loading />
+        </div>
+
         <div>
           <input type="text" placeholder="email" formControlName="email" />
 
@@ -47,7 +50,7 @@
           </div>
         </div>
 
-        <p class="text-red-400 animate-fade " *ngIf="(status$|async)==statusEnum.ERROR">
+        <p class="text-red-400 animate-fade " *ngIf="(status$|async)==ApiStatusEnum.ERROR">
           Sorry, we could not find your account.
         </p>
 

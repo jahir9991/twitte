@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  DetachedRouteHandle,
+  RouteReuseStrategy,
+  RouterModule,
+  Routes,
+} from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { SigninGuard } from './guards/signin.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -24,6 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: LayoutComponent,
     children: [
+      
       {
         path: 'home',
 
@@ -40,14 +47,14 @@ const routes: Routes = [
         title: 'this is home ...',
       },
       {
-        path: 'profile',
-
+        path: ':id',
         loadChildren: () =>
           import('../@features/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
         title: 'this is profile ...',
       },
+
       {
         path: '**',
         redirectTo: 'home',
@@ -58,7 +65,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      // onSameUrlNavigation: 'reload',
+    }),
   ],
   exports: [RouterModule],
 })

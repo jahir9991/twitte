@@ -1,3 +1,8 @@
-.infinity{
-    height:30vh;
-}
+.infinity {
+    height: 30vh;
+    @apply relative;
+    .nodata {
+      @apply absolute top-[50%] left-[50%] translate-x-[-50%];
+    }
+  }
+  

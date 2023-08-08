@@ -4,19 +4,19 @@
     <div class="flex flex-shrink-0 p-4 pb-0">
       <div class="user-info">
         <div class="info-wrapper">
-          <a [routerLink]="['/profile',tweet.user.id]">
+          <a [routerLink]="['/',payload.user.id]">
 
             <img src="/assets/icon-ios.77d25eba.png" alt="" />
           </a>
           <div class="ml-3">
-            <a [routerLink]="['/profile',tweet.user.id]" class="text-base leading-6 font-medium">
-              {{ tweet.user.username }}
+            <a [routerLink]="['/',payload.user.id]" class="text-base leading-6 font-medium">
+              {{ payload.user.username }}
 
             </a>
             <p class="inline  text-sm leading-5 font-medium text-gray-400 transition ease-in-out duration-150">
-              @{{ tweet.user.username }} ...
+              @{{ payload.user.username }} ...
 
-              <span class="text-xs"> {{ tweet.published | timeago }}</span>
+              <span class="text-xs"> {{ payload.published | timeago }}</span>
 
             </p>
 
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="pl-5 sm:pl-16 overflow-hidden p-4">
-      <div [innerHTML]="tweet.content" class="text-base width-auto font-medium flex-shrink">
+      <div [innerHTML]="payload.content" class="text-base width-auto font-medium flex-shrink">
 
       </div>
     </div>

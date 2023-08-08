@@ -6,22 +6,26 @@ import { UserFollowerPageComponent } from './pages/user-follower-page/user-follo
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: ProfileBasePageComponent,
+
     children: [
       {
         path: '',
         component: UserTweetsPageComponent,
+        data: {
+          shouldCached: true
+        },
       },
       {
         path: 'following',
         component: UserFollowingPageComponent,
       },
       {
-        path: 'follower',
+        path: 'followers',
         component: UserFollowerPageComponent,
-      }
-    ]
+      },
+    ],
   },
 ];
 

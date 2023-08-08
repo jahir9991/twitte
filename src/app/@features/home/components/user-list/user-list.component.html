@@ -31,8 +31,8 @@
 
             </div>
 
-            <ng-container *ngFor="let user of (currentPageData$ | async);trackBy:identify">
-                <app-user-card [user]="user"></app-user-card>
+            <ng-container *ngFor="let item of (currentPageData$ | async);trackBy:identify">
+                <app-user-card [payload]="item"></app-user-card>
                 <hr class="border-gray-200" />
             </ng-container>
             <div class="text-center text-gray-600">

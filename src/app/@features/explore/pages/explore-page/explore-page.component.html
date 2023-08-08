@@ -10,8 +10,8 @@
     <hr class="border-gray-200" />
 
     <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="loadMore()">
-      <ng-container *ngFor="let user of (currentPageData$ | async);trackBy:identify">
-        <app-user-card [user]="user"></app-user-card>
+      <ng-container *ngFor="let item of (currentPageData$ | async);trackBy:identify">
+        <app-user-card [payload]="item" [followFeature]="true" [isFollowed]="false"></app-user-card>
       </ng-container>
     </div>
 

@@ -14,6 +14,12 @@ import { MobileNavComponent } from './layout/components/mobile-nav/mobile-nav.co
 import { SigninGuard } from './guards/signin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import {
+  ActivatedRouteSnapshot,
+  DetachedRouteHandle,
+  RouteReuseStrategy,
+} from '@angular/router';
+import { CustomRouteReuseStrategy } from './rouerStrategy';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,7 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
     LayoutComponent,
     AsideNavComponent,
     MobileNavComponent,
-    LogoutPageComponent
+    LogoutPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,10 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
     TimeagoModule.forRoot(),
   ],
   providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomRouteReuseStrategy,
+    },
     [
       {
         provide: HTTP_INTERCEPTORS,

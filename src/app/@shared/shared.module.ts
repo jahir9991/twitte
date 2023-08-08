@@ -9,10 +9,21 @@ import { RouterModule } from '@angular/router';
 import { FullLoadingComponent } from './components/full-loading/full-loading.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [UserCardComponent, TweetPostComponent, TweetCardComponent, FullLoadingComponent],
-  imports: [RouterModule, CommonModule, TimeagoModule, InfiniteScrollModule, FormsModule, ReactiveFormsModule],
+  declarations: [
+    UserCardComponent,
+    TweetPostComponent,
+    TweetCardComponent,
+    FullLoadingComponent,
+  ],
+  imports: [
+    RouterModule,
+    CommonModule,
+    TimeagoModule,
+    InfiniteScrollModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   exports: [
     UserCardComponent,
@@ -22,4 +33,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InfiniteScrollModule,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

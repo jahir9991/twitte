@@ -8,6 +8,6 @@ import { TweetEntity } from 'src/app/@entities/tweet.entity';
 })
 export class TweetCardComponent {
 
-    @Input() tweet: TweetEntity;
+    @Input() payload: TweetEntity;
 
 }
