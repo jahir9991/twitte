@@ -1,0 +1,62 @@
+
+.pwa-modal1 {
+    @apply min-h-screen w-full bg-secondary bg-opacity-50 fixed top-0 left-0 flex  justify-center items-center;
+  
+    .content-wrapper {
+      @apply animate-fade-up animate-duration-300 rounded-2xl relative p-5 ;
+      @apply bg-white bg-opacity-80 backdrop-blur-md shadow-md;
+  
+      .logo-wrapper {
+        @apply w-full flex justify-center my-2;
+        img {
+          @apply w-10;
+        }
+      }
+  
+      .body-wrapper {
+        @apply py-2  sm:w-[275px] mx-auto;
+  
+        h3 {
+          @apply font-semibold text-lg mb-2;
+        }
+        .context-text {
+          @apply text-sm;
+        }
+  
+        .login-btn {
+          @apply mt-6 w-full px-2 py-3 bg-secondary hover:bg-opacity-90 transition-all rounded-full text-white font-semibold;
+        }
+  
+        .cancel-btn {
+          @apply mt-4 w-full px-2 py-2 bg-white hover:bg-opacity-90 transition-all rounded-full text-gray-800 font-semibold border border-gray-400;
+        }
+      }
+    }
+  }
+  
+  .pwa-modal{
+    @apply fixed top-0 h-14 w-full overflow-hidden bg-white  bg-opacity-80  backdrop-filter backdrop-blur-sm ; 
+
+    .modal-body{
+            // @apply inline;
+      .btn{
+        @apply m-2;
+        @apply right-0 w-32  p-1  hover:bg-opacity-90 transition-all rounded-full text-white font-semibold;
+      }
+
+      
+
+
+      .close-btn {
+        @apply absolute right-3 top-1 p-2 rounded-full bg-gray-50 hover:bg-secondary transition-all hover:scale-110 hover:rotate-180;
+        svg {
+          @apply fill-none stroke-secondary w-7 font-bold;
+        }
+        &:hover svg{
+          @apply stroke-white scale-110;
+        }
+      }
+
+    }
+
+  }
