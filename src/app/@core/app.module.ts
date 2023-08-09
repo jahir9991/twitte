@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './rouerStrategy';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, LogoutPageComponent],
@@ -28,6 +29,12 @@ import { HotToastModule } from '@ngneat/hot-toast';
     HotToastModule.forRoot({
       position: 'top-right',
       className: 'toast-glass',
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
   providers: [
