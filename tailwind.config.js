@@ -19,8 +19,6 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animated"),
-  require('postcss-import'),
-  require('autoprefixer')
 ],
 };
 
