@@ -1,11 +1,12 @@
 .logout-modal {
-  @apply min-h-screen w-full bg-secondary bg-opacity-50 fixed top-0 left-0 flex justify-center items-center;
+  @apply min-h-screen w-full bg-secondary bg-opacity-50 fixed top-0 left-0 flex  justify-center items-center;
 
   .content-wrapper {
-    @apply animate-fade-up animate-duration-300  bg-white rounded-lg relative p-5;
+    @apply animate-fade-up animate-duration-300 rounded-2xl relative p-5 ;
+    @apply bg-white bg-opacity-80 backdrop-blur-md shadow-md;
 
     .logo-wrapper {
-      @apply w-full flex justify-center mt-2;
+      @apply w-full flex justify-center my-2;
       img {
         @apply w-10;
       }

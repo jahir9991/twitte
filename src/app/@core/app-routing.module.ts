@@ -14,7 +14,6 @@ const routes: Routes = [
   {
     path: 'logout',
     canActivate: [AuthGuard],
-
     component: LogoutPageComponent,
   },
 
@@ -23,7 +22,7 @@ const routes: Routes = [
     canActivate: [SigninGuard],
     loadChildren: () =>
       import('../@features/auth/auth.module').then((m) => m.AuthModule),
-    title: 'auth...',
+    title: 'Twitte: your home of thoughts',
   },
   {
     path: '',

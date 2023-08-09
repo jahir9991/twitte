@@ -47,7 +47,7 @@
         }
 
         .sigin-btn {
-          @apply bg-transparent font-semibold text-primary hover:bg-dark-gray hover:bg-opacity-10 transition-all;
+          @apply  font-semibold text-primary bg-white border-gray-400 hover:bg-blue-300 hover:bg-opacity-10 transition-all;
         }
       }
     }

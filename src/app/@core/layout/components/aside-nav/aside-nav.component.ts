@@ -1,14 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-  ViewRef,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Content } from '@ngneat/overview';
-import { UserEntity } from 'src/app/@entities/user.entity';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
 @Component({
@@ -19,11 +9,7 @@ import { LocalStorageService } from 'src/app/@services/local-storage.service';
 })
 export class AsideNavComponent {
   constructor(private localStoreService: LocalStorageService) {}
-
-  @ViewChild('template') template: Content;
-
   user: any;
-
   ngOnInit(): void {
     this.user = this.localStoreService.getUser();
   }

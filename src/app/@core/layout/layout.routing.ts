@@ -11,7 +11,7 @@ const routes: Routes = [
           path: 'home',
           loadChildren: () =>
             import('../../@features/home/home.module').then((m) => m.HomeModule),
-          title: 'this is home ...',
+          title: 'Twitte: Home of your thoughts',
         },
         {
           path: 'explore',
@@ -19,7 +19,7 @@ const routes: Routes = [
             import('../../@features/explore/explore.module').then(
               (m) => m.ExploreModule
             ),
-          title: 'this is home ...',
+          title: 'Explore new   ...',
         },
         {
           path: ':id',
@@ -27,7 +27,7 @@ const routes: Routes = [
             import('../../@features/profile/profile.module').then(
               (m) => m.ProfileModule
             ),
-          title: 'this is profile ...',
+          title: 'Profile ...',
         },
   
         {

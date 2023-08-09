@@ -62,9 +62,12 @@
 
 @import "node_modules/@ngneat/hot-toast/src/styles/styles.scss";
 
-html {
-  -webkit-text-size-adjust: none;
-  touch-action: manipulation;
+html, body {
+  // -webkit-text-size-adjust: none;
+  // touch-action: manipulation;
+  touch-action: pan-x pan-y;
+  background-color: #f0f2f5;
+  
 }
 
 .toast-glass {

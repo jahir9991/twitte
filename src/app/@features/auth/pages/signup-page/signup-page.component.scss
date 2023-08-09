@@ -13,14 +13,14 @@
     }
 
     .close-btn {
-      @apply absolute left-3 top-3 p-2 rounded-full bg-gray-50 hover:bg-secondary;
+      @apply absolute left-3 top-3 p-2 rounded-full bg-gray-50 hover:bg-secondary transition-all hover:scale-110 hover:rotate-180;
 
       svg {
         @apply fill-none stroke-secondary w-7 font-bold;
       }
 
       &:hover svg{
-        @apply stroke-white;
+        @apply stroke-white scale-110;
       }
 
     }

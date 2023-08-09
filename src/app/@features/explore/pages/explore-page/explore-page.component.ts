@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UserEntity } from 'src/app/@entities/user.entity';
-import { UserApiService } from 'src/app/@services/api/user-api.service';
 import { ExplorePageFacade } from './explore-page.facade';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({

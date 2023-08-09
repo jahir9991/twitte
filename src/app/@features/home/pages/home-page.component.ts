@@ -1,17 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import {
-  BehaviorSubject,
-  catchError,
-  combineLatest,
-  map,
-  of,
-  scan,
-  switchMap,
-  tap,
-} from 'rxjs';
-import { TimelineResponseModel } from 'src/app/@models/timelineResponse.model';
-import { AuthApiService } from 'src/app/@services/api/auth-api.service';
-import { TweetApiService } from 'src/app/@services/api/tweet-api.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HomePageFacade } from './home-page.facade';
 import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 

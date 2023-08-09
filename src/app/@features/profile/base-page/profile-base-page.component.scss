@@ -56,8 +56,8 @@
     @apply w-full;
 
     .profile-menu-wrapper {
-      @apply border-b border-gray-100 px-5 mt-5 w-full sticky top-0 z-10 backdrop-filter backdrop-blur-lg;
-
+      @apply border-b border-gray-100 px-5 mt-5 w-full sticky top-0 z-10  ;
+      @apply  bg-white bg-opacity-80 backdrop-blur-sm ;
       ul {
         @apply w-full flex  justify-around;
 

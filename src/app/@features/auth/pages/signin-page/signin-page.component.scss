@@ -7,21 +7,21 @@
   
 
     .logo-wrapper {
-      @apply w-full flex justify-center mt-2;
+      @apply w-full flex justify-center mt-5;
       img {
         @apply w-10;
       }
     }
 
     .close-btn {
-      @apply absolute left-3 top-3 p-2 rounded-full bg-gray-50 hover:bg-secondary;
+      @apply absolute left-3 top-3 p-2 rounded-full bg-gray-50 hover:bg-secondary transition-all hover:scale-110 hover:rotate-180;
 
       svg {
         @apply fill-none stroke-secondary w-7 font-bold;
       }
 
       &:hover svg{
-        @apply stroke-white;
+        @apply stroke-white scale-110;
       }
 
     }
@@ -44,12 +44,10 @@
           @apply w-full p-2 border border-secondary rounded focus:outline-none;
         }
 
-        button,
+        
         .login-btn {
           @apply p-2 bg-secondary hover:bg-opacity-90 transition-all rounded-full text-white font-semibold;
-        }
-
-        .login-btn {
+        
           @apply mt-5 sm:mt-4 mb-2;
         }
       }
