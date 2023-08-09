@@ -9,7 +9,7 @@
     }
 
     .layout-slot {
-      @apply col-span-6 sm:col-span-5  md:col-span-3  h-full w-full shadow-md ;
+      @apply col-span-6 sm:col-span-5  md:col-span-3  h-full w-full shadow-md  bg-white;
     }
     .search-slot {
       @apply  hidden md:block col-span-2 ;
