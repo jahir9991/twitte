@@ -8,9 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'twitte::Home of idea';
-  constructor() {}
 
-  ngOnInit() {
-   
-  }
 }
