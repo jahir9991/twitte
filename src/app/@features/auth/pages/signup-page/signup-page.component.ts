@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupPayloadModel } from 'src/app/@models/signupPayload.model';
 import { SignupFacade } from './signup.facade';
 import { ENV } from 'src/environments/environment';
+import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 
 @Component({
   templateUrl: './signup-page.component.html',
@@ -13,6 +14,7 @@ import { ENV } from 'src/environments/environment';
 })
 export class SignupPageComponent implements OnInit {
   validateForm!: FormGroup;
+  ApiStatusEnum = ApiStatusEnum;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -20,7 +22,6 @@ export class SignupPageComponent implements OnInit {
   ) {}
 
   status$ = this.modelfacade.status$;
-  apiStatusEnum = this.modelfacade.apiStatusEnum;
 
   ngOnInit(): void {
     this.validateForm = this.formBuilder.group({

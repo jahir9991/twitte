@@ -1,5 +1,10 @@
 <div class="sing-in">
   <div class="content-wrapper">
+
+    <div *ngIf="(status$|async)==ApiStatusEnum.LOADING" class="h-full w-full absolute top-0">
+      <app-full-loading />
+    </div>
+
     <a routerLink="/auth" class="close-btn">
       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -8,19 +13,17 @@
       </svg>
     </a>
     <div class="logo-wrapper">
-      <img src="../../../../../assets/icon-svg.svg" alt="logo" />
+      <img src="/assets/icon-svg.svg" alt="logo" />
     </div>
 
-    <div class="login-wrapper ">
+    <div class="login-wrapper " [class.opacity-5]="(status$|async)==ApiStatusEnum.LOADING">
 
       <h3>Create your account</h3>
 
 
       <form class="relative" [formGroup]="validateForm" (submit)="onSubmit()">
 
-        <div *ngIf="(status$|async)==apiStatusEnum.LOADING" class="h-full w-full absolute top-0">
-          <app-full-loading />
-        </div>
+       
 
         <div>
           <input type="text" placeholder="email" formControlName="email" />
@@ -61,7 +64,7 @@
           </div>
         </div>
 
-        <p class="text-red-400 animate-fade " *ngIf="(status$|async)==apiStatusEnum.ERROR">
+        <p class="text-red-400 animate-fade " *ngIf="(status$|async)==ApiStatusEnum.ERROR">
           Sorry, we could not create your account.
         </p>
 
