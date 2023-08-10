@@ -1,7 +1,7 @@
 {
   "name": "twitte",
   "short_name": "twitte",
-  "theme_color": "#1976d2",
+  "theme_color": "#14171A",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

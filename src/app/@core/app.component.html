@@ -1,2 +1,6 @@
 <router-outlet></router-outlet>
-<!-- <app-pwa-banner></app-pwa-banner> -->
+<ng-container *ngIf="!platform.IOS || !platform.SAFARI">
+
+    <app-pwa-banner></app-pwa-banner>
+
+</ng-container>

@@ -1,3 +1,4 @@
+import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'twitte::Home of idea';
-  constructor() {}
+  constructor(public platform: Platform) {}
 
   ngOnInit() {
    
