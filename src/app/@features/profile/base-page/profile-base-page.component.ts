@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { UserApiService } from 'src/app/@services/api/user-api.service';
+import { AuthService } from 'src/app/@services/auth.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
 @UntilDestroy()
@@ -13,7 +14,7 @@ import { LocalStorageService } from 'src/app/@services/local-storage.service';
 })
 export class ProfileBasePageComponent {
   constructor(
-    private localStorageService: LocalStorageService,
+    private authService: AuthService,
     private activeRoute: ActivatedRoute,
     private userApiService: UserApiService,
     private toastService: HotToastService
@@ -25,17 +26,17 @@ export class ProfileBasePageComponent {
 
   ngOnInit(): void {
     this.userId = this.activeRoute.snapshot.paramMap.get('id');
-    this.currentUser = this.localStorageService.getUser();
+    this.currentUser = this.authService.getCurrentUser();
     this.myProfile = this.userId == this.currentUser.id;
   }
-  isAuthenticated = this.localStorageService.isAuthenticated();
+  isAuthenticated = this.authService.isAuthenticated();
 
   onOutletLoaded(component) {
     component.isMyProfile = this.userId == this.currentUser.id;
   }
 
   follow() {
-    this.isFollowing=true;
+    this.isFollowing = true;
     this.userApiService
       .followUser(this.userId)
       .pipe(untilDestroyed(this))
@@ -47,7 +48,7 @@ export class ProfileBasePageComponent {
   }
 
   unfollow() {
-    this.isFollowing=false;
+    this.isFollowing = false;
 
     this.userApiService
       .unfollowUser(this.userId)

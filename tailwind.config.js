@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         "twitter-chirp": ["TwitterChirp", "sans-serif"],
-        "twitter-chirp-extended": ["TwitterChirpExtendedHeavy", "sans-serif"],
       },
       colors: {
         primary: "#1DA1F2",

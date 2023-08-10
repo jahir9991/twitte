@@ -53,12 +53,7 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   shouldReuseRoute(
     future:ActivatedRouteSnapshot,
     current: ActivatedRouteSnapshot
-  ): boolean {
-
-
-  console.log(future['_routerState']?.url);
-  console.log(current['_routerState']?.url);
-  
+  ): boolean {  
     // return false;
     return future['_routerState']?.url === current['_routerState']?.url;
   }

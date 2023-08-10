@@ -16,10 +16,8 @@ import { ApiStatusEnum } from 'src/app/@shared/consts/ApiStatus.enum';
 export class UserTweetsPageComponent implements AfterViewInit {
   constructor(private modalFacade: UserTweetsPageFacade) {}
   @Input() isMyProfile;
-  ngAfterViewInit(): void {
-    console.log('UserTweetsPageComponent>isMyprofile',this.isMyProfile);
-  }
-  
+  ngAfterViewInit(): void {}
+
   ApiStatusEnum = ApiStatusEnum;
 
   currentPageData$ = this.modalFacade.currentPageData$;

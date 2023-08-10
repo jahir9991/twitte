@@ -30,41 +30,56 @@ const CacheStore = {
     return LocalStorageService.delete(key);
   },
 };
-export class BaseStore<T> {
-  private obs$!: BehaviorSubject<T>;
+
+export class BaseStore<T> extends BehaviorSubject<T> {
   private cacheKey: string | undefined;
-  private initialValueSnapShot: T;
-  constructor(initialValue: T, cacheKey: string = null) {
-    this.cacheKey = cacheKey;
-    if (initialValue === null) {
-      this.obs$ = new BehaviorSubject<T>(CacheStore.get(cacheKey));
-    } else {
-      this.obs$ = new BehaviorSubject<T>(initialValue);
-    }
-    this.initialValueSnapShot = initialValue;
+
+  super() {
+    this.super();
   }
-  getValue = (): T => this.obs$.value;
-  get = (): Observable<T> => this.obs$.asObservable();
-  set = (payload: T) => {
-    this.cacheKey ? CacheStore.set(this.cacheKey, payload) : null;
-    this.obs$.next(payload);
-  };
+
+  constructor(initialValue: T, cacheKey: string = null) {
+    super(initialValue);
+
+    this.cacheKey = cacheKey;
+
+    if (cacheKey) {
+      if (CacheStore.get(cacheKey) !== null) {
+        initialValue = CacheStore.get(cacheKey);
+      } else {
+        CacheStore.set(this.cacheKey, initialValue);
+      }
+    }
+
+    this.next(initialValue);
+  }
+
+  override next(value: T): void {
+    if (this.cacheKey) {
+      CacheStore.set(this.cacheKey, value);
+    }
+    super.next(value);
+  }
+
+  // set = (payload: T) => {
+  //   this.cacheKey ? CacheStore.set(this.cacheKey, payload) : null;
+  //   this.next(payload);
+  // };
   update = (callBack: (pv: T) => T) => {
     const updatedValues = callBack(this.getValue());
     this.cacheKey ? CacheStore.set(this.cacheKey, updatedValues) : null;
-    this.obs$.next(updatedValues);
+    this.next(updatedValues);
   };
   patch = (payload: Partial<T>) => {
-    let margeValues = { ...this.obs$.value, ...payload };
+    let margeValues = { ...this.value, ...payload };
     this.cacheKey ? CacheStore.set(this.cacheKey, margeValues) : null;
-    this.obs$.next(margeValues);
+    this.next(margeValues);
   };
   reset = () => {
     this.cacheKey ? CacheStore.remove(this.cacheKey) : null;
-    this.obs$.next(this.initialValueSnapShot);
   };
   clear = () => {
-    this.obs$.next(null as any);
+    this.next(null as any);
     this.cacheKey ? CacheStore.remove(this.cacheKey) : null;
   };
 }

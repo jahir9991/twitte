@@ -19,7 +19,6 @@ export class UserFollowingPageComponent {
 
   @Input() isMyProfile: boolean;
   ngAfterViewInit(): void {
-    console.log('UserFollowingPageComponent>isMyprofile', this.isMyProfile);
   }
 
   ApiStatusEnum = ApiStatusEnum;

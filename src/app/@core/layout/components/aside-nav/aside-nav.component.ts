@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AuthService } from 'src/app/@services/auth.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { LocalStorageService } from 'src/app/@services/local-storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsideNavComponent {
-  constructor(private localStoreService: LocalStorageService) {}
+  constructor(private authService: AuthService) {}
   user: any;
   ngOnInit(): void {
-    this.user = this.localStoreService.getUser();
+    this.user = this.authService.getCurrentUser();
   }
 
   showAvatarMenu = false;

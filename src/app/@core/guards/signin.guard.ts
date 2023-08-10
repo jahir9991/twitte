@@ -6,6 +6,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/@services/auth.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
 @Injectable({
@@ -14,16 +15,15 @@ import { LocalStorageService } from 'src/app/@services/local-storage.service';
 export class SigninGuard implements CanActivate {
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService
+    private authService: AuthService,
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    console.log('signin called',this.localStorageService.isAuthenticated());
-    
-    if (this.localStorageService.isAuthenticated()) {
+
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['/home'], { replaceUrl: true });
       return false;
     }

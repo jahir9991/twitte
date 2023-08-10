@@ -11,6 +11,6 @@ export class AuthBasePageComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.localStorageService.clearAll();
+    this.localStorageService.removeToken();
   }
 }
