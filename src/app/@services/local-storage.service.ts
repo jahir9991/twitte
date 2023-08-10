@@ -11,15 +11,6 @@ export class LocalStorageService {
   //   window.location.href = '/auth';
   // }
 
-  isAuthenticated() {
-    return this.isTokenValid();
-  }
-
-  getUser() {
-    const user = this.getDecodedToken();
-    return user || false;
-  }
-
   isTokenExpired(tokens: number): boolean {
     const date: Date = new Date(tokens * 1000);
     const parsedDate = Date.parse(date.toString());
@@ -56,6 +47,11 @@ export class LocalStorageService {
       return error;
     }
   }
+
+  removeToken() {
+    this.removeData(`${storagePrefix}token`);
+  }
+
   getRefreshToken() {
     try {
       let data: any = localStorage.getItem(`${storagePrefix}refresh-token`);

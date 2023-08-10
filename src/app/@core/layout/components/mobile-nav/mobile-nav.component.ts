@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/@services/auth.service';
 import { LocalStorageService } from 'src/app/@services/local-storage.service';
 
 @Component({
@@ -16,8 +17,8 @@ export class MobileNavComponent implements OnInit {
     this.isAsideNav = !this.isAsideNav;
   }
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private authService: AuthService) {}
   ngOnInit(): void {
-    this.user = this.localStorageService.getUser();
+    this.user = this.authService.getCurrentUser();
   }
 }

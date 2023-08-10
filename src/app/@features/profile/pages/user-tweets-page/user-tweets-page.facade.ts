@@ -38,7 +38,6 @@ export class UserTweetsPageFacade {
     private route: ActivatedRoute,
     private tweetApiService: TweetApiService
   ) {
-    console.log(this.route.snapshot);
     this.userId = this.route.snapshot.paramMap.get('id');
   }
 

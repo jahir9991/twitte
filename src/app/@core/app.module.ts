@@ -15,9 +15,10 @@ import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './rouerStrategy';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PwaBannerComponent } from './pwa/pwa-banner/pwa-banner.component';
 
 @NgModule({
-  declarations: [AppComponent, LogoutPageComponent],
+  declarations: [AppComponent, LogoutPageComponent, PwaBannerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

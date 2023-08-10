@@ -57,12 +57,10 @@ export class SearchFacade {
       this.userApiService.getUsersBySearch(currentPage, currentSize, searchTerm)
     ),
     catchError((err) => {
-      console.log('mm', err);
       this.status$.next(statusEnum.ERROR);
       return of<UserSearchResponseModel>({ count: 0, search_results: [] });
     }),
     tap((data: UserSearchResponseModel) => {
-      console.log(data.count == 0);
       if (data.count == 0) {
         this.status$.next(statusEnum.NODATA);
       } else {

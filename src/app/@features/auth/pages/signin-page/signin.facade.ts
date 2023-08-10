@@ -39,7 +39,6 @@ export class SigninFacade {
           this.toastService.error('login failed');
           this.status$.next(ApiStatusEnum.ERROR);
         },
-      })
-      .add(() => console.log('signin done'));
+      });
   }
 }
